@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic-ExtraBold.ttf">
+            <string>NanumGothicExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="OnboardingViewController" customModule="Weekly_Challenge_Onboarding_Splash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="yUL-1N-DOK">
+                                <rect key="frame" x="16" y="731" width="382" height="114"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-fp-9Pb">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                        <color key="backgroundColor" name="LoginBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="3T5-Xc-QUJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NanumGothicExtraBold" family="NanumGothic" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="회원가입">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W7-lw-2bT">
+                                        <rect key="frame" x="0.0" y="66" width="382" height="48"/>
+                                        <color key="backgroundColor" name="Gray"/>
+                                        <fontDescription key="fontDescription" name="NanumGothicExtraBold" family="NanumGothic" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="로그인">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-8F-viV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="605"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="s4J-Er-7cP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="fpG-qd-q3h" customClass="CollectionViewCell" customModule="Weekly_Challenge_Onboarding_Splash" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jTz-Hc-vFQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FRe-DS-0BQ">
+                                <rect key="frame" x="149.5" y="649" width="115.5" height="26"/>
+                                <color key="pageIndicatorTintColor" name="Gray"/>
+                                <color key="currentPageIndicatorTintColor" name="Blue"/>
+                                <connections>
+                                    <action selector="pageControllerTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="MAN-YK-Clk"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yUL-1N-DOK" secondAttribute="bottom" constant="51" id="2Rt-mL-JW2"/>
+                            <constraint firstItem="FRe-DS-0BQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HEM-dB-Y4l"/>
+                            <constraint firstItem="yUL-1N-DOK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Rzs-JK-3OF"/>
+                            <constraint firstItem="yUL-1N-DOK" firstAttribute="top" secondItem="FRe-DS-0BQ" secondAttribute="bottom" constant="56" id="UOQ-VR-ivQ"/>
+                            <constraint firstItem="OZr-8F-viV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eQA-O4-kyz"/>
+                            <constraint firstItem="OZr-8F-viV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="l08-on-wUq"/>
+                            <constraint firstItem="OZr-8F-viV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="svl-sC-WQg"/>
+                            <constraint firstItem="FRe-DS-0BQ" firstAttribute="top" secondItem="OZr-8F-viV" secondAttribute="bottom" id="w2O-cg-a5p"/>
+                            <constraint firstItem="yUL-1N-DOK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUz-GQ-zAm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="OZr-8F-viV" id="K82-vs-lsv"/>
+                        <outlet property="pageControl" destination="FRe-DS-0BQ" id="DfV-jR-Nb0"/>
+                        <outlet property="signInButton" destination="1W7-lw-2bT" id="aaP-aA-3d3"/>
+                        <outlet property="signUpButton" destination="A2a-fp-9Pb" id="H4E-Wp-6Ty"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.086956521739133" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Blue">
+            <color red="0.13725490196078433" green="0.34509803921568627" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray">
+            <color red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LoginBlue">
+            <color red="0.12549019607843137" green="0.30588235294117649" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
