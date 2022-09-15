@@ -15,6 +15,11 @@
 		E05E8F3928D1890A00E0E858 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05E8F3728D1890A00E0E858 /* LaunchScreen.storyboard */; };
 		E05E8F4128D18DE000E0E858 /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E8F4028D18DE000E0E858 /* UIView+EXT.swift */; };
 		E05E8F4628D1D2A900E0E858 /* UITextField+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E8F4528D1D2A900E0E858 /* UITextField+EXT.swift */; };
+		E086DE4C28D3602B00ACCE01 /* UILabel+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E086DE4B28D3602B00ACCE01 /* UILabel+EXT.swift */; };
+		E092BBB828D2114F00E3DFEA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092BBB628D2114F00E3DFEA /* TableViewCell.swift */; };
+		E092BBB928D2114F00E3DFEA /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E092BBB728D2114F00E3DFEA /* TableViewCell.xib */; };
+		E092BBBB28D213F800E3DFEA /* PopularTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092BBBA28D213F800E3DFEA /* PopularTerms.swift */; };
+		E092BBBD28D214D900E3DFEA /* PopularTermsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092BBBC28D214D900E3DFEA /* PopularTermsDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		E05E8F4328D1BD7D00E0E858 /* NanumGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Bold.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (2)/NanumGothic-Bold.ttf"; sourceTree = "<group>"; };
 		E05E8F4428D1BD7D00E0E858 /* NanumGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Regular.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (2)/NanumGothic-Regular.ttf"; sourceTree = "<group>"; };
 		E05E8F4528D1D2A900E0E858 /* UITextField+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+EXT.swift"; sourceTree = "<group>"; };
+		E086DE4B28D3602B00ACCE01 /* UILabel+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+EXT.swift"; sourceTree = "<group>"; };
+		E092BBB628D2114F00E3DFEA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		E092BBB728D2114F00E3DFEA /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		E092BBBA28D213F800E3DFEA /* PopularTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTerms.swift; sourceTree = "<group>"; };
+		E092BBBC28D214D900E3DFEA /* PopularTermsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTermsDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +72,15 @@
 		E05E8F2B28D1890800E0E858 /* Dailly_Challenge_SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				E086DE4D28D3683000ACCE01 /* Extentions */,
 				E05E8F4228D1BD4F00E0E858 /* Fonts */,
 				E05E8F2C28D1890800E0E858 /* AppDelegate.swift */,
 				E05E8F2E28D1890800E0E858 /* SceneDelegate.swift */,
-				E05E8F3028D1890800E0E858 /* ViewController.swift */,
-				E05E8F4028D18DE000E0E858 /* UIView+EXT.swift */,
-				E05E8F4528D1D2A900E0E858 /* UITextField+EXT.swift */,
-				E05E8F3228D1890800E0E858 /* Main.storyboard */,
+				E092BBB528D2112A00E3DFEA /* Models */,
+				E092BBB428D2111900E3DFEA /* Views */,
+				E092BBB328D2110E00E3DFEA /* Controllers */,
+				E092BBB228D210FF00E3DFEA /* Cells */,
 				E05E8F3528D1890A00E0E858 /* Assets.xcassets */,
-				E05E8F3728D1890A00E0E858 /* LaunchScreen.storyboard */,
 				E05E8F3A28D1890A00E0E858 /* Info.plist */,
 			);
 			path = Dailly_Challenge_SearchView;
@@ -83,6 +93,51 @@
 				E05E8F4428D1BD7D00E0E858 /* NanumGothic-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E086DE4D28D3683000ACCE01 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				E05E8F4028D18DE000E0E858 /* UIView+EXT.swift */,
+				E05E8F4528D1D2A900E0E858 /* UITextField+EXT.swift */,
+				E086DE4B28D3602B00ACCE01 /* UILabel+EXT.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		E092BBB228D210FF00E3DFEA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E092BBB628D2114F00E3DFEA /* TableViewCell.swift */,
+				E092BBB728D2114F00E3DFEA /* TableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E092BBB328D2110E00E3DFEA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E05E8F3028D1890800E0E858 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E092BBB428D2111900E3DFEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E05E8F3228D1890800E0E858 /* Main.storyboard */,
+				E05E8F3728D1890A00E0E858 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E092BBB528D2112A00E3DFEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E092BBBA28D213F800E3DFEA /* PopularTerms.swift */,
+				E092BBBC28D214D900E3DFEA /* PopularTermsDataManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05E8F3928D1890A00E0E858 /* LaunchScreen.storyboard in Resources */,
+				E092BBB928D2114F00E3DFEA /* TableViewCell.xib in Resources */,
 				E05E8F3628D1890A00E0E858 /* Assets.xcassets in Resources */,
 				E05E8F3428D1890800E0E858 /* Main.storyboard in Resources */,
 			);
@@ -159,8 +215,12 @@
 				E05E8F4128D18DE000E0E858 /* UIView+EXT.swift in Sources */,
 				E05E8F4628D1D2A900E0E858 /* UITextField+EXT.swift in Sources */,
 				E05E8F3128D1890800E0E858 /* ViewController.swift in Sources */,
+				E092BBBD28D214D900E3DFEA /* PopularTermsDataManager.swift in Sources */,
+				E092BBB828D2114F00E3DFEA /* TableViewCell.swift in Sources */,
+				E092BBBB28D213F800E3DFEA /* PopularTerms.swift in Sources */,
 				E05E8F2D28D1890800E0E858 /* AppDelegate.swift in Sources */,
 				E05E8F2F28D1890800E0E858 /* SceneDelegate.swift in Sources */,
+				E086DE4C28D3602B00ACCE01 /* UILabel+EXT.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
