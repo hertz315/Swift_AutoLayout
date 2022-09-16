@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     // MARK: - @IBOutlet
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var textfieldContainerViewTopConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var textField: DesignableUITextField!
     
     @IBOutlet weak var searchTitle: UILabel!
@@ -28,6 +30,7 @@ class ViewController: UIViewController {
     // MARK: - 전역변수
     // 데이터를 관리하기위한 에러이
     var model: [PopularTerms] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +43,44 @@ class ViewController: UIViewController {
         setUpTableView()
         // 텍스트필드 셋업
         setUpTextField()
+        // 노티피케이션 옵저버 등록
+        notioficationSetUp()
+
+
     }
+    
+    // MARK: - 노티피케이션 셋업
+    func notioficationSetUp() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           return
+        }
+      
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+                guard let self = self else { return }
+                self.textfieldContainerViewTopConstraint.constant = 10
+            })
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                guard let self = self else { return }
+                self.textfieldContainerViewTopConstraint.constant = 61
+            })
+        }
+    }
+    
+  
     
     // MARK: - @IBAction
     @IBAction func recommendedkeywords(_ sender: UIButton) {
@@ -78,11 +118,11 @@ class ViewController: UIViewController {
         
     }
     
-//    // 쎌사이의 인셋 주기
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        tableView.frame = tableView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-//    }
+    // 쎌사이의 인셋 주기
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = tableView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+    }
     
 
 
@@ -90,18 +130,26 @@ class ViewController: UIViewController {
 
 // MARK: - 텍스트 필드 델리게이트
 extension ViewController: UITextFieldDelegate {
+    // 키보드 바깥에 터치하면 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
+        // 추천 검색어 , 인기검색어 화면 다시 표시
+        self.searchTitle.isHidden = false
+        self.popularSearchTermsLabel.isHidden = false
+        self.recommendedLabel.isHidden = false
+        self.recommendedStackView.isHidden = false
+        self.tableView.isHidden = false
+    }
+    
     // 텍스트 필드 포커시시 한번만 호출
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("⭐️ - 키보드 포커스 상태")
-        // 1. 검색창 나머지 다른 요소 지우기?? 가리기 ?
         self.searchTitle.isHidden = true
         self.popularSearchTermsLabel.isHidden = true
         self.recommendedLabel.isHidden = true
         self.recommendedStackView.isHidden = true
-        //    *
-        // 2. 검색창 위로 올리기
-        //    * 노티피케이션 센터 이용?
-        
+        self.tableView.isHidden = true
         
     }
     
@@ -142,9 +190,3 @@ extension ViewController: UITableViewDelegate {
 
 }
 
-//키보드 포커스가 되면 아래 추천 키워드와, 인기 검색어 부분이 사라집니다.
-//위에 검색 타이틀도 사라지고 검색창은 위로 올라갑니다
-
-// 생각 나누기
-//1. 델리게이트 , 노티피케이션 같은걸로 키보드를 포커스 시킨다
-//2. 키보드가 포커스 되면 검색창만 위로 올리고 검색창 외에 다른 배경은 흰색으로 바꾼다

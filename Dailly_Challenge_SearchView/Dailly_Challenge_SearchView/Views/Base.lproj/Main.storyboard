@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,13 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="M6U-57-bqb">
-                                <rect key="frame" x="16" y="207.5" width="294" height="94"/>
+                                <rect key="frame" x="16" y="212" width="294" height="94"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lIn-lG-CKZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="261" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xV8-ii-Sct">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -62,7 +62,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccC-wb-f1j">
-                                                <rect key="frame" x="58" y="0.0" width="37" height="28"/>
+                                                <rect key="frame" x="56" y="0.0" width="35" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -91,7 +91,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S7-Kc-fsu">
-                                                <rect key="frame" x="105" y="0.0" width="86" height="28"/>
+                                                <rect key="frame" x="101" y="0.0" width="80" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -120,7 +120,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3L2-ej-WrL">
-                                                <rect key="frame" x="201" y="0.0" width="60" height="28"/>
+                                                <rect key="frame" x="191" y="0.0" width="56" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -151,10 +151,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ee1-X8-5mj">
-                                        <rect key="frame" x="0.0" y="33" width="211" height="28"/>
+                                        <rect key="frame" x="0.0" y="33" width="203" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkB-Sc-bSi">
-                                                <rect key="frame" x="0.0" y="0.0" width="37" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -183,7 +183,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4P-EJ-fHQ">
-                                                <rect key="frame" x="47" y="0.0" width="48" height="28"/>
+                                                <rect key="frame" x="45" y="0.0" width="46" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -212,7 +212,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBU-2h-8WV">
-                                                <rect key="frame" x="105" y="0.0" width="48" height="28"/>
+                                                <rect key="frame" x="101" y="0.0" width="46" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -241,7 +241,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpr-uV-sMU">
-                                                <rect key="frame" x="163" y="0.0" width="48" height="28"/>
+                                                <rect key="frame" x="157" y="0.0" width="46" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -272,10 +272,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3hE-1Q-D7C">
-                                        <rect key="frame" x="0.0" y="66" width="294" height="28"/>
+                                        <rect key="frame" x="0.0" y="66" width="278" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-WY-ajM">
-                                                <rect key="frame" x="0.0" y="0.0" width="37" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -304,7 +304,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pz-eu-uIK">
-                                                <rect key="frame" x="47" y="0.0" width="71" height="28"/>
+                                                <rect key="frame" x="45" y="0.0" width="66" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -333,7 +333,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwm-qf-Bdf">
-                                                <rect key="frame" x="128" y="0.0" width="48" height="28"/>
+                                                <rect key="frame" x="121" y="0.0" width="46" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -359,7 +359,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtU-IZ-z8x">
-                                                <rect key="frame" x="186" y="0.0" width="108" height="28"/>
+                                                <rect key="frame" x="177" y="0.0" width="101" height="28"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -392,7 +392,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbj-fn-CaE">
-                                <rect key="frame" x="16" y="173" width="80" height="18.5"/>
+                                <rect key="frame" x="16" y="177" width="80" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="16"/>
                                 <color key="textColor">
                                     <string key="name">
@@ -401,7 +401,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBB-Wc-vD4" userLabel="TextFieldContainerView">
-                                <rect key="frame" x="16" y="105" width="382" height="44"/>
+                                <rect key="frame" x="16" y="109" width="382" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="아이템을 추가하세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-bR-ERA" customClass="DesignableUITextField" customModule="Dailly_Challenge_SearchView" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -438,7 +438,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인기 검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANU-rX-083">
-                                <rect key="frame" x="16" y="323.5" width="80" height="18.5"/>
+                                <rect key="frame" x="16" y="328" width="80" height="19"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="16"/>
                                 <color key="textColor">
                                     <string key="name">
@@ -447,11 +447,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8gW-dc-HXu">
-                                <rect key="frame" x="0.0" y="358" width="414" height="504"/>
+                                <rect key="frame" x="0.0" y="363" width="414" height="499"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0R-zj-4Zs">
-                                <rect key="frame" x="16" y="61" width="382" height="28"/>
+                                <rect key="frame" x="16" y="65" width="382" height="28"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="24"/>
                                 <color key="textColor">
                                     <string key="name">
@@ -475,9 +475,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ANU-rX-083" secondAttribute="trailing" constant="318" id="YoV-w3-LuC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8gW-dc-HXu" secondAttribute="trailing" id="ehY-6B-puX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8gW-dc-HXu" secondAttribute="bottom" id="fdX-3N-8F9"/>
+                            <constraint firstItem="tBB-Wc-vD4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="61" id="gha-dA-cXD"/>
                             <constraint firstItem="8gW-dc-HXu" firstAttribute="top" secondItem="ANU-rX-083" secondAttribute="bottom" constant="16" id="iNK-B0-FcT"/>
                             <constraint firstItem="8gW-dc-HXu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mao-sj-UrZ"/>
-                            <constraint firstItem="tBB-Wc-vD4" firstAttribute="top" secondItem="w0R-zj-4Zs" secondAttribute="bottom" constant="16" id="vB5-SY-d1r"/>
                             <constraint firstItem="tBB-Wc-vD4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wwR-Hv-zNP"/>
                             <constraint firstItem="w0R-zj-4Zs" firstAttribute="trailing" secondItem="tBB-Wc-vD4" secondAttribute="trailing" id="yNX-vk-66o"/>
                             <constraint firstItem="w0R-zj-4Zs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="yTF-xC-lDX"/>
@@ -492,6 +492,7 @@
                         <outlet property="tableView" destination="8gW-dc-HXu" id="SxI-8A-XDT"/>
                         <outlet property="textField" destination="tuP-bR-ERA" id="cWW-iQ-xNJ"/>
                         <outlet property="textFieldContainerView" destination="tBB-Wc-vD4" id="bSp-7d-VN1"/>
+                        <outlet property="textfieldContainerViewTopConstraint" destination="gha-dA-cXD" id="e59-G6-X5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -499,13 +500,8 @@
             <point key="canvasLocation" x="1839.1304347826087" y="83.705357142857139"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="tuP-bR-ERA">
-            <size key="intrinsicContentSize" width="165" height="34"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <namedColor>
             <string key="name">
 22.09.14-black</string>
