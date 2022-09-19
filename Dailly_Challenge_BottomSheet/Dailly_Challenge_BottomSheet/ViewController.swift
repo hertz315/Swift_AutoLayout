@@ -10,6 +10,13 @@ import PanModal
 
 class ViewController: UIViewController {
     
+    // MARK: - 전역변수
+    var isPopUpClose = false
+    var isPopUpClose24Hours = false
+    
+    let today = Date()
+    lazy var nextDate = Calendar.current.date(byAdding: .day, value: 1, to: today)
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
     }
@@ -17,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,14 +35,21 @@ class ViewController: UIViewController {
         } else {
             view.isUserInteractionEnabled = false
         }
-        
     }
     
     
     func setUpPanModal() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let bottomSheetVC = storyboard.instantiateViewController(withIdentifier: BottomSheetVC.identifier) as! BottomSheetVC
-        self.presentPanModal(bottomSheetVC)
+        
+        
+        if self.today >= self.nextDate! && UserDefaults.standard.objectIsForced(forKey: "24시간보지않기") {
+            self.presentPanModal(bottomSheetVC)
+        }
+        
+        if isPopUpClose == UserDefaults.standard.bool(forKey: "다시보지않기") {
+            self.presentPanModal(bottomSheetVC)
+        }
         view.isUserInteractionEnabled = false
     }
     
