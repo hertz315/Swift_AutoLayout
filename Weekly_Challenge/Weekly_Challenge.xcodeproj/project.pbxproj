@@ -36,6 +36,7 @@
 		E05E8F1928D16B5F00E0E858 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		E05E8F1C28D16CB900E0E858 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E05E8F1D28D16CB900E0E858 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		E08B54DB28D9A32300BA6653 /* NanumGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Bold.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (5)/NanumGothic-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 		E05E8EDB28CF1D0800E0E858 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				E08B54DB28D9A32300BA6653 /* NanumGothic-Bold.ttf */,
 				E05E8EDC28CF1D9400E0E858 /* NanumGothic-ExtraBold.ttf */,
 				E05E8EDD28CF1D9400E0E858 /* NanumGothic-Regular.ttf */,
 			);
@@ -184,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E05E8EBF28CEFBAF00E0E858 /* Build configuration list for PBXProject "Weekly_Challenge_Onboarding_Splash" */;
+			buildConfigurationList = E05E8EBF28CEFBAF00E0E858 /* Build configuration list for PBXProject "Weekly_Challenge" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -429,7 +431,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E05E8EBF28CEFBAF00E0E858 /* Build configuration list for PBXProject "Weekly_Challenge_Onboarding_Splash" */ = {
+		E05E8EBF28CEFBAF00E0E858 /* Build configuration list for PBXProject "Weekly_Challenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E05E8ED628CEFBB100E0E858 /* Debug */,

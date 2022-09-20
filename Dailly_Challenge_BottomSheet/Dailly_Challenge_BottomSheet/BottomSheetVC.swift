@@ -19,6 +19,7 @@ class BottomSheetVC: UIViewController {
                                                   rightBattonLabel: "30시간 보지 않기")
     
     
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
@@ -81,18 +82,12 @@ class BottomSheetVC: UIViewController {
         // "다시보지않기" 버튼을 눌르면 불리언값 true로 저장
         UserDefaults.standard.set(true, forKey: "다시보지않기")
         dismiss(animated: true)
-      
+        
     }
     
     @IBAction func doNotWatchFor24HoursButtonTapped(_ sender: UIButton) {
         
-        let today = Date()
-        let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: today)
-        
-        UserDefaults.standard.object(forKey: "today") as? Date
-        UserDefaults.standard.object(forKey: "nextDate") as? Calendar
         // 버튼을 눌르면 상태를 저장할 코드 설정 (UserDefaults)
-        UserDefaults.standard.object(forKey: "24시간보지않기") as? Date
         // 클릭하면 팝업이 닫힌다
         dismiss(animated: true)
     }

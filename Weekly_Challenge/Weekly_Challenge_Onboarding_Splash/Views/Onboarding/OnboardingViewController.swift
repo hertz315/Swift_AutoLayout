@@ -77,7 +77,4 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
         pageControl.currentPage = currentPage
     }
     
-    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        <#code#>
-    }
 }

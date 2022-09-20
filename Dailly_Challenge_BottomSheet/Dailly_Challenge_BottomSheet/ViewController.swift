@@ -12,10 +12,7 @@ class ViewController: UIViewController {
     
     // MARK: - 전역변수
     var isPopUpClose = false
-    var isPopUpClose24Hours = false
     
-    let today = Date()
-    lazy var nextDate = Calendar.current.date(byAdding: .day, value: 1, to: today)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -23,7 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
       
     }
     
@@ -31,28 +27,28 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         // 모달 뷰 관련 함수를 이곳에 작성
         if view.isUserInteractionEnabled == true {
-            setUpPanModal()
+            doNotNeverSeePanModal()
         } else {
             view.isUserInteractionEnabled = false
         }
     }
     
-    
-    func setUpPanModal() {
+    func doNotNeverSeePanModal() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let bottomSheetVC = storyboard.instantiateViewController(withIdentifier: BottomSheetVC.identifier) as! BottomSheetVC
-        
-        
-        if self.today >= self.nextDate! && UserDefaults.standard.objectIsForced(forKey: "24시간보지않기") {
-            self.presentPanModal(bottomSheetVC)
-        }
-        
         if isPopUpClose == UserDefaults.standard.bool(forKey: "다시보지않기") {
             self.presentPanModal(bottomSheetVC)
         }
         view.isUserInteractionEnabled = false
     }
     
+    
 }
 
-
+// MARK: - Date 익스텐션
+extension Date {
+    func daysBetweenDate(toDate: Date) -> Int {
+        let components = Calendar.current.dateComponents([.day], from: self, to: toDate)
+        return components.day ?? 0
+    }
+}
