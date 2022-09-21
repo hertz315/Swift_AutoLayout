@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E07B863E28DAF0F900D9301F /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07B863C28DAF0F900D9301F /* ReviewTVC.swift */; };
+		E07B863F28DAF0F900D9301F /* ReviewTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07B863D28DAF0F900D9301F /* ReviewTVC.xib */; };
+		E07B864128DAF7B700D9301F /* ReviewTVCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07B864028DAF7B700D9301F /* ReviewTVCH.swift */; };
+		E07B864328DAF7C600D9301F /* ReviewTVCH.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07B864228DAF7C600D9301F /* ReviewTVCH.xib */; };
 		E08B54E928DADF0D00BA6653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54E828DADF0D00BA6653 /* AppDelegate.swift */; };
 		E08B54EB28DADF0D00BA6653 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54EA28DADF0D00BA6653 /* SceneDelegate.swift */; };
 		E08B54ED28DADF0D00BA6653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54EC28DADF0D00BA6653 /* ViewController.swift */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E07B863C28DAF0F900D9301F /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
+		E07B863D28DAF0F900D9301F /* ReviewTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTVC.xib; sourceTree = "<group>"; };
+		E07B864028DAF7B700D9301F /* ReviewTVCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVCH.swift; sourceTree = "<group>"; };
+		E07B864228DAF7C600D9301F /* ReviewTVCH.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTVCH.xib; sourceTree = "<group>"; };
 		E08B54E528DADF0D00BA6653 /* Dailly_Challenge_reviewList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dailly_Challenge_reviewList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08B54E828DADF0D00BA6653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E08B54EA28DADF0D00BA6653 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +50,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E07B863B28DAEF2800D9301F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E07B863C28DAF0F900D9301F /* ReviewTVC.swift */,
+				E07B863D28DAF0F900D9301F /* ReviewTVC.xib */,
+				E07B864028DAF7B700D9301F /* ReviewTVCH.swift */,
+				E07B864228DAF7C600D9301F /* ReviewTVCH.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E08B54DC28DADF0D00BA6653 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +114,7 @@
 		E08B550128DAE0FB00BA6653 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E07B863B28DAEF2800D9301F /* Cells */,
 				E08B54F328DADF0F00BA6653 /* LaunchScreen.storyboard */,
 				E08B54EE28DADF0D00BA6653 /* Main.storyboard */,
 			);
@@ -175,7 +195,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E08B54F528DADF0F00BA6653 /* LaunchScreen.storyboard in Resources */,
+				E07B863F28DAF0F900D9301F /* ReviewTVC.xib in Resources */,
 				E08B54F228DADF0F00BA6653 /* Assets.xcassets in Resources */,
+				E07B864328DAF7C600D9301F /* ReviewTVCH.xib in Resources */,
 				E08B54F028DADF0D00BA6653 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,8 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07B864128DAF7B700D9301F /* ReviewTVCH.swift in Sources */,
 				E08B550528DAE18800BA6653 /* UIView+EXT.swift in Sources */,
 				E08B54ED28DADF0D00BA6653 /* ViewController.swift in Sources */,
+				E07B863E28DAF0F900D9301F /* ReviewTVC.swift in Sources */,
 				E08B54E928DADF0D00BA6653 /* AppDelegate.swift in Sources */,
 				E08B54EB28DADF0D00BA6653 /* SceneDelegate.swift in Sources */,
 			);
@@ -335,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7A8HJKU9L3;
@@ -343,6 +368,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -352,6 +379,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hertz.Dailly-Challenge-reviewList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7A8HJKU9L3;
@@ -371,6 +400,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -380,6 +411,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hertz.Dailly-Challenge-reviewList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
