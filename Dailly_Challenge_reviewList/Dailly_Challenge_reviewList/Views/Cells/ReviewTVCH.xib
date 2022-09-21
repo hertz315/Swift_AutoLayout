@@ -19,12 +19,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="8KW-gI-Jds">
-            <rect key="frame" x="0.0" y="0.0" width="903" height="305"/>
+        <view contentMode="scaleToFill" id="8KW-gI-Jds" customClass="ReviewTVCH" customModule="Dailly_Challenge_reviewList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="700" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xjY-fY-2mC">
-                    <rect key="frame" x="16" y="141" width="258.66666666666669" height="23.333333333333343"/>
+                    <rect key="frame" x="16" y="18.333333333333336" width="258.66666666666669" height="23.333333333333336"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vz7-BZ-3RN">
                             <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="23.333333333333332"/>
@@ -35,7 +35,7 @@
                                     <color key="textColor" name="black"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 님의 리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQc-pu-Iq6">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 님의 리뷰" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQc-pu-Iq6">
                                     <rect key="frame" x="118.66666666666666" y="0.0" width="86.666666666666657" height="23.333333333333332"/>
                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                                     <color key="textColor">

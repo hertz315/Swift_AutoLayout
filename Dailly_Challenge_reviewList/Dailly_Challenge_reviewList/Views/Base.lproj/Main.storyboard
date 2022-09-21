@@ -20,10 +20,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dailly_Challenge_reviewList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainVC" customModule="Dailly_Challenge_reviewList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1639"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="dRS-Fm-r8E">
                                 <rect key="frame" x="17" y="87" width="341" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 16" translatesAutoresizingMaskIntoConstraints="NO" id="9Ma-vk-AOX">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Ma-vk-AOX">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Pqq-aF-UfK"/>
@@ -277,6 +277,17 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="1639"/>
+                    <connections>
+                        <outlet property="averagyRatingLabel" destination="9d6-Eh-KOB" id="p6a-z3-LTr"/>
+                        <outlet property="averagyRatingStarStackView" destination="8Mr-WL-Fen" id="t8w-i0-61a"/>
+                        <outlet property="followButton" destination="iV8-eJ-twh" id="v0O-Wf-Qf2"/>
+                        <outlet property="followerCount" destination="Lya-89-wo3" id="94U-hL-fAC"/>
+                        <outlet property="followingCount" destination="ApN-7b-b7Z" id="L0B-RC-8xz"/>
+                        <outlet property="profileImage" destination="9Ma-vk-AOX" id="PW8-kE-EDZ"/>
+                        <outlet property="tableView" destination="edb-Ly-VGF" id="RI2-Xu-DuC"/>
+                        <outlet property="userName" destination="38A-0r-mz7" id="b1v-gd-l2E"/>
+                        <outlet property="userStatusMessage" destination="s4o-ag-guF" id="ruZ-eB-WOu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +295,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ellipse 16" width="100" height="100"/>
+        <image name="profileImage" width="100" height="100"/>
         <image name="rateFillStar" width="20.666666030883789" height="19.333333969116211"/>
         <image name="rateStar" width="20.666666030883789" height="19.333333969116211"/>
         <namedColor>

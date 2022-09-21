@@ -13,11 +13,13 @@
 		E07B864328DAF7C600D9301F /* ReviewTVCH.xib in Resources */ = {isa = PBXBuildFile; fileRef = E07B864228DAF7C600D9301F /* ReviewTVCH.xib */; };
 		E08B54E928DADF0D00BA6653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54E828DADF0D00BA6653 /* AppDelegate.swift */; };
 		E08B54EB28DADF0D00BA6653 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54EA28DADF0D00BA6653 /* SceneDelegate.swift */; };
-		E08B54ED28DADF0D00BA6653 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54EC28DADF0D00BA6653 /* ViewController.swift */; };
+		E08B54ED28DADF0D00BA6653 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B54EC28DADF0D00BA6653 /* MainVC.swift */; };
 		E08B54F028DADF0D00BA6653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08B54EE28DADF0D00BA6653 /* Main.storyboard */; };
 		E08B54F228DADF0F00BA6653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E08B54F128DADF0F00BA6653 /* Assets.xcassets */; };
 		E08B54F528DADF0F00BA6653 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E08B54F328DADF0F00BA6653 /* LaunchScreen.storyboard */; };
 		E08B550528DAE18800BA6653 /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B550428DAE18800BA6653 /* UIView+EXT.swift */; };
+		E09BAD0728DB0C0A00790C07 /* ReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BAD0628DB0C0A00790C07 /* ReviewData.swift */; };
+		E09BAD0B28DB389D00790C07 /* ReviewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09BAD0A28DB389D00790C07 /* ReviewDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +30,7 @@
 		E08B54E528DADF0D00BA6653 /* Dailly_Challenge_reviewList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dailly_Challenge_reviewList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08B54E828DADF0D00BA6653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E08B54EA28DADF0D00BA6653 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E08B54EC28DADF0D00BA6653 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E08B54EC28DADF0D00BA6653 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		E08B54EF28DADF0D00BA6653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E08B54F128DADF0F00BA6653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E08B54F428DADF0F00BA6653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +39,8 @@
 		E08B54FE28DAE0DE00BA6653 /* NanumGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Regular.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (3)/NanumGothic-Regular.ttf"; sourceTree = "<group>"; };
 		E08B54FF28DAE0DE00BA6653 /* NanumGothic-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-ExtraBold.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (3)/NanumGothic-ExtraBold.ttf"; sourceTree = "<group>"; };
 		E08B550428DAE18800BA6653 /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
+		E09BAD0628DB0C0A00790C07 /* ReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewData.swift; sourceTree = "<group>"; };
+		E09BAD0A28DB389D00790C07 /* ReviewDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +110,7 @@
 		E08B550028DAE0E900BA6653 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E08B54EC28DADF0D00BA6653 /* ViewController.swift */,
+				E08B54EC28DADF0D00BA6653 /* MainVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +128,8 @@
 		E08B550228DAE10300BA6653 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E09BAD0628DB0C0A00790C07 /* ReviewData.swift */,
+				E09BAD0A28DB389D00790C07 /* ReviewDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,10 +216,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07B864128DAF7B700D9301F /* ReviewTVCH.swift in Sources */,
+				E09BAD0B28DB389D00790C07 /* ReviewDataManager.swift in Sources */,
 				E08B550528DAE18800BA6653 /* UIView+EXT.swift in Sources */,
-				E08B54ED28DADF0D00BA6653 /* ViewController.swift in Sources */,
+				E08B54ED28DADF0D00BA6653 /* MainVC.swift in Sources */,
 				E07B863E28DAF0F900D9301F /* ReviewTVC.swift in Sources */,
 				E08B54E928DADF0D00BA6653 /* AppDelegate.swift in Sources */,
+				E09BAD0728DB0C0A00790C07 /* ReviewData.swift in Sources */,
 				E08B54EB28DADF0D00BA6653 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

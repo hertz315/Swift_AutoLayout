@@ -8,11 +8,14 @@
 import UIKit
 
 class ReviewTVC: UITableViewCell {
+    
+  
 
     
-    
+    // MARK: - @IBOulet
     @IBOutlet weak var storeName: UILabel!
     
+    @IBOutlet weak var userUploadImage: UIImageView!
     
     @IBOutlet weak var storeDetailName: UILabel!
     
@@ -28,16 +31,22 @@ class ReviewTVC: UITableViewCell {
     
     @IBOutlet weak var seeMoreButton: UIButton!
     
-    @IBOutlet weak var likeImage: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
     
-    @IBOutlet weak var likeCountLabel: UILabel!
+    @IBOutlet weak var likeTappedCount: UILabel!
     
-    @IBOutlet weak var chatImage: UIImageView!
+    @IBOutlet weak var chatButton: UIButton!
     
-    @IBOutlet weak var chatCountLabel: UILabel!
+    @IBOutlet weak var chatTappedCount: UILabel!
     
-    @IBOutlet weak var reportReviewImage: UIImageView!
+    @IBOutlet weak var reportReviewButton: UIButton!
     
+    // MARK: - seeMoreHieghtConstraint
+    
+    @IBOutlet weak var seeMoreButtonHeight: NSLayoutConstraint!
+    
+    
+    // MARK: - awakeFromNib-LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
