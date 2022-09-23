@@ -9,13 +9,19 @@ import UIKit
 
 class ReviewTVCH: UITableViewHeaderFooterView {
 
+    // MARK: - Identifier
     static let identifier = "ReviewTVCH"
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    // MARK: - @IBOulet
+    
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userWriteReviewCount: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
     }
-    */
 
 }
+
+
