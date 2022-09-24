@@ -38,6 +38,8 @@ class MainVC: UIViewController {
     fileprivate func makeUI() {
         // 팔로우버튼 코너레디어스 처리
         self.followButton.layer.cornerRadius = self.followButton.frame.height / 2
+        self.followingCount.text = 1111.roundedWithAbbreviations
+        self.followerCount.text = 11111.roundedWithAbbreviations
     }
     
     fileprivate func setupTableView() {
@@ -61,21 +63,14 @@ class MainVC: UIViewController {
         tableView.register(cellUINib, forCellReuseIdentifier: ReviewTVC.identifier)
         
     }
-    
-    
-    // MARK: - @IBAction
-
-
 }
 
 // MARK: - UITableViewDataSource 델리게이트
 extension MainVC: UITableViewDataSource {
-    
     // 섹션이 몇개있냐
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.reviewDataArray.count
     }
-    
     // 하나의 섹션에 몇개의 알맹이가 있냐
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.reviewDataArray[section].rows.count
@@ -84,7 +79,6 @@ extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
     // 쎌의 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTVC.identifier, for: indexPath) as! ReviewTVC
@@ -97,7 +91,6 @@ extension MainVC: UITableViewDataSource {
         cell.storeName.text = cellData.storeName
         // ⭐️ 함수의 인풋값으로 불리언값 던지기⭐️
         cell.setupBodyUI(cellData.isFold)
-        
         // ⭐️클로저로 이벤트 넘기기⭐️
         cell.onMoreBtnClicked = { [weak self] in
             self?.reviewDataArray[indexPath.section].rows[indexPath.row].isFold.toggle()
@@ -105,13 +98,15 @@ extension MainVC: UITableViewDataSource {
 //            self?.tableView.reloadData()
         }
         
-        
+        // ⭐️클로저로 이벤트 넘기기⭐️
+        cell.onReportReviewTapped = { [weak self] in
+            let sheet = UIAlertController(title: "신고", message: "이 리뷰를 정말 신고하시겠습니까?", preferredStyle: .alert)
+            sheet.addAction(UIAlertAction(title: "네", style: .destructive, handler: { _ in print("yes 클릭") }))
+            sheet.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: { _ in print("yes 클릭") }))
+            self?.present(sheet, animated: true)
+        }
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return reviewData[section].userNickName
-//    }
 
 }
 

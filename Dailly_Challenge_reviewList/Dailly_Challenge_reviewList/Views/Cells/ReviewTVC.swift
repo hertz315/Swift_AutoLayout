@@ -41,6 +41,7 @@ class ReviewTVC: UITableViewCell {
     
     // ⭐️cellForRowAt에서 이벤트받아서 처리할 클로저 생성⭐️
     var onMoreBtnClicked : (() -> Void)? = nil
+    var onReportReviewTapped: (() -> ())? = nil
     
     // MARK: - awakeFromNib-LifeCycle
     override func awakeFromNib() {
@@ -48,13 +49,13 @@ class ReviewTVC: UITableViewCell {
         // Initialization code
         setupButtonTint()
         setupLikeCount()
+        
     }
     
     
     /// ⭐️바디 텍스트 부분 UI 적용⭐️
     func setupBodyUI(_ isFold : Bool) {
         self.reviewBody.numberOfLines = isFold ? 5 : 0
-//        detailLabelHeight.priority = isFold ? .defaultHigh : .defaultLow
         let btnTitle = isFold ? "더보기" : "줄여서보기"
         self.seeMoreButton.setTitle(btnTitle, for: .normal)
         self.contentView.layoutIfNeeded()
@@ -97,14 +98,20 @@ class ReviewTVC: UITableViewCell {
             // 불리언값으로 버튼을 눌렀는지 안눌렀는지 알아볼려고 설정한 플래그를 변경해주기
             self.isLikeButtonTapped.toggle()
         }
-        
-        func setSelected(_ selected: Bool, animated: Bool) {
-            super.setSelected(selected, animated: animated)
-            
-            // Configure the view for the selected state
-        }
     }
     
+    @IBAction func reportReviewButtonTapped(_ sender: UIButton) {
+        // ⭐️이벤트를 정의한후 넘겨준 클로저로 터트리기⭐️
+        onReportReviewTapped?()
+        
+    }
+    
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
 }
 
 // MARK: - UILabel 익스텐션
