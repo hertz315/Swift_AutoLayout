@@ -27,7 +27,6 @@ class MainVC: UIViewController {
     
     // MARK: - 컨스트레이트
     
-    
     // MARK: - viewDidLoad() - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
