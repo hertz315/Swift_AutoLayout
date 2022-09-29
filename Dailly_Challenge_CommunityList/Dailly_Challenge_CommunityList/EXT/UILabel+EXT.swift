@@ -15,4 +15,5 @@ extension UILabel {
         
         return Int(estimatedSize.height / (self.font!.lineHeight))
     }
+    
 }

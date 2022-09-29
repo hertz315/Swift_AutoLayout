@@ -17,10 +17,7 @@ class CustomNavigationBar: UIView {
     //MARK: Delegate Degfine
     var delegate: CustomNavigationBarProtocol?
     //MARK: CustomNavigationBar Custom Property
-    /**
-     * @ 네비게이션 높이 지정 (기본 = 60)
-     * coder : sanghyeon
-     */
+    
     // MARK: - 생성여부
     var navigationHeight: Int = 60 {
         willSet {
@@ -29,27 +26,25 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    /**
-     * @ 네비게이션 타이틀 텍스트 지정
-     * coder : sanghyeon
-     */
+    /// 네비게이션바 메인타이틀
     var titleText: String = "" {
         willSet {
             navigationTitleLabel.text = newValue
         }
     }
-    
-    /// 네비게이션 우측 텍스느
+    /// 네비게이션 우측 텍스트
     var rightTitleText: String = "" {
         willSet {
             rightNavigationTitleLabel.text = newValue
         }
     }
-    
-    /**
-     * @ 네비게이션 타이틀 표시 여부 (기본값 = true)
-     * coder : sanghyeon
-     */
+    /// 알림 텍스트 변경
+    var noticeText: String = "" {
+        willSet {
+            noticeCountLabel.text = newValue
+        }
+    }
+    /// 타이틀 레이블 표시 여부
     var isVisibleTitleLabel: Bool = true {
         willSet {
             if !newValue {
@@ -57,10 +52,7 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    /**
-     * @ 네비게이션 하단 그림자 생성 여부
-     * coder : sanghyeon
-     */
+    /// 네비게이션바 하단 크림자 생성여부
     var isDrawShadow: Bool = false {
         willSet {
             if newValue {
@@ -77,10 +69,7 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    /**
-     * @ 네비게이션 하단 선 생성 여부
-     * coder : sanghyeon
-     */
+    /// 네비게이션 하단 선 생성 여부
     var isDrawBottomLine: Bool = false {
         willSet {
             if newValue {
@@ -94,29 +83,8 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    /**
-     * @ 네비게이션 좌측 버튼 생성 여부
-     * coder : sanghyeon
-     */
-    var isUseLeftButton: Bool = false {
-        willSet {
-            if newValue {
-                self.addSubview(leftButton)
-                self.leftButton.snp.makeConstraints { make in
-                    make.leading.equalTo(containerView).offset(10)
-                    make.bottom.equalTo(containerView).offset(-10)
-                    make.width.height.equalTo(30)
-                }
-                self.navigationTitleLabel.snp.remakeConstraints { make in
-                    make.leading.equalTo(leftButton.snp.trailing).offset(5)
-                    make.bottom.equalTo(containerView).offset(-10)
-                }
-                self.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
-            }
-        }
-    }
+    
     /// 우측 버튼 생성 여부
-    ///
     var isUserNavigationRightImageView: Bool = false {
         willSet {
             if newValue {
@@ -144,7 +112,6 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    
     /// 내비게이션바 우측 텍스트 생성 여부
     var isNavigationBarRightTextLabel: Bool = false {
         willSet {
@@ -157,27 +124,42 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    
+    /// 네비게이션 좌측 버튼 생성 여부
+    var isUseLeftButton: Bool = false {
+        willSet {
+            if newValue {
+                self.addSubview(leftButton)
+                self.leftButton.snp.makeConstraints { make in
+                    make.leading.equalTo(containerView).offset(10)
+                    make.bottom.equalTo(containerView).offset(-10)
+                    make.width.height.equalTo(30)
+                }
+                self.navigationTitleLabel.snp.remakeConstraints { make in
+                    make.leading.equalTo(leftButton.snp.trailing).offset(5)
+                    make.bottom.equalTo(containerView).offset(-10)
+                }
+                self.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
+            }
+        }
+    }
     /// 알림 카운트모드 생성 여부
     var isNoticeCountMode: Bool = false {
         willSet {
             if newValue {
                 self.addSubview(noticeImage)
-                self.noticeCount.snp.makeConstraints { make in
+                self.noticeImage.snp.makeConstraints { make in
                     make.width.height.equalTo(23)
-                    make.trailing.equalTo(rightButtonImageView.snp.leading).offset(-8)
+                    make.trailing.equalTo(rightButtonImageView.snp.leading).offset(-3)
+                    make.bottom.equalTo(containerView).offset(-10)
+                }
+                self.rightNavigationTitleLabel.snp.remakeConstraints { make in
+                    make.trailing.equalTo(noticeImage.snp.leading).offset(0)
                     make.bottom.equalTo(containerView).offset(-10)
                 }
             }
         }
     }
-    
-    
-    /**
-     * @ 네비게이션 좌측 버튼 이미지 변경 (기본 = chevron.left)
-     * coder : sanghyeon
-     */
-    // MARK: - 버튼 이미지 설정 관련
+    /// 네비게이션 좌측 버튼 이미지 생성여부
     var leftButtonImage: UIImage = UIImage(systemName: "chevron.backward")! {
         willSet {
             leftButton.setImage(newValue, for: .normal)
@@ -190,10 +172,11 @@ class CustomNavigationBar: UIView {
 //        }
 //    }
     
+    // MARK: - 구성요소
     /// 컨테이너뷰
     let containerView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .yellow
+        containerView.backgroundColor = .white
         return containerView
     }()
     /// 네비게이션바 바텀라인
@@ -226,11 +209,12 @@ class CustomNavigationBar: UIView {
     }()
     
     /// 알림 카운트 레이블
-    let noticeCount: UILabel = {
+    let noticeCountLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
-        label.font = UIFont(name: "NanumGothic", size: 20)
+        label.font = UIFont(name: "NanumGothic", size: 12)
         label.font = label.font.bold
+        label.textColor = .white
         return label
     }()
     
@@ -259,7 +243,7 @@ class CustomNavigationBar: UIView {
         var imageView = UIImageView()
         imageView.image = UIImage(systemName: "bell")
         imageView.tintColor = .black
-        imageView.image = imageView.image?.withAlignmentRectInsets(UIEdgeInsets(top: -7, left: 0, bottom: 0, right: 0))
+        imageView.image = imageView.image?.withAlignmentRectInsets(UIEdgeInsets(top: -7, left: -3, bottom: 0, right: -3))
         return imageView
     }()
     
@@ -293,9 +277,12 @@ extension CustomNavigationBar {
         
         
         //MARK: AddSubView
+        /// 컨테이너 뷰 관련
         self.addSubview(containerView)
         containerView.addSubview(navigationTitleLabel)
         containerView.addSubview(rightNavigationTitleLabel)
+        /// 알림 이미지뷰 관련
+        noticeImage.addSubview(noticeCountLabel)
         
         
         //MARK: ViewContraints
@@ -308,6 +295,12 @@ extension CustomNavigationBar {
         navigationTitleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.bottom.equalTo(containerView).offset(-10)
+        }
+        
+        /// 알림레이블 위치 잡기
+        noticeCountLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(noticeImage)
+            make.centerY.equalTo(noticeImage)
         }
         //MARK: ViewAddTarget
         
@@ -329,4 +322,21 @@ extension CustomNavigationBar {
     }
     
 }
+
+
+//#if DEBUG
+//
+//import SwiftUI
+//
+//struct CustomNavigationBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomNavigationBar()
+//            .getRepresentable()
+//            .previewLayout(.sizeThatFits)
+//            .frame(width: 400, height: 400)
+//    }
+//}
+//
+//#endif
+
 

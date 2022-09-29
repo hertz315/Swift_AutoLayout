@@ -96,3 +96,30 @@ extension UIView {
     }
 }
 
+
+#if DEBUG
+
+import SwiftUI
+
+extension UIView {
+    
+    private struct ViewRepresentable: UIViewRepresentable {
+        
+        let view : UIView
+        
+        func updateUIView(_ uiView: UIViewType, context: Context) {
+        }
+        
+        func makeUIView(context: Context) -> some UIView {
+            return view
+        }
+    }
+    
+    func getRepresentable() -> some View {
+        ViewRepresentable(view: self)
+    }
+}
+
+
+#endif
+
