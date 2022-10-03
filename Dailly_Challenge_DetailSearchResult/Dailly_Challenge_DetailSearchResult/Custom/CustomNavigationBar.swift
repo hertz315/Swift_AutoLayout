@@ -71,13 +71,15 @@ class CustomNavigationBar: UIView {
         }
     }
     /// 네비게이션 하단 선 생성 여부
-    var isDrawBottomLine: Bool = true {
+    var isDrawBottomLine: Bool = false {
         willSet {
             if newValue {
                 self.addSubview(bottomLine)
                 self.bottomLine.snp.makeConstraints { make in
                     make.height.equalTo(1)
-                    make.leading.trailing.bottom.equalToSuperview()
+                    make.leading.trailing.equalToSuperview()
+                    make.top.equalTo(containerView.snp.bottom)
+//                    make.leading.trailing.bottom.equalToSuperview()
                 }
             } else {
                 self.bottomLine.removeFromSuperview()
@@ -85,31 +87,47 @@ class CustomNavigationBar: UIView {
         }
     }
     /// 네비게이션 좌측 버튼 생성 여부
-    var isUseLeftButton: Bool = true {
+    var isUseLeftButton: Bool = false {
         willSet {
             if newValue {
                 self.addSubview(leftButton)
                 self.leftButton.snp.makeConstraints { make in
                     make.leading.equalTo(containerView).offset(10)
-                    make.bottom.equalTo(containerView).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-15)
                     make.width.height.equalTo(30)
                 }
                 self.navigationTitleLabel.snp.remakeConstraints { make in
-                    make.leading.equalTo(leftButton.snp.trailing).offset(5)
-                    make.bottom.equalTo(containerView).offset(-10)
+//                    make.leading.equalTo(leftButton.snp.trailing).offset(50)
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.bottom.equalTo(containerView).offset(-19)
                 }
                 self.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
             }
         }
     }
+    /// 우측 검색 버튼
+    var isUserRightSearchButton: Bool = false {
+        willSet {
+            if newValue {
+                self.addSubview(searchButton)
+                self.searchButton.snp.makeConstraints { make in
+                    make.trailing.equalTo(rightButton.snp.leading).offset(-15)
+                    make.bottom.equalTo(containerView).offset(-15)
+                    make.width.height.equalTo(30)
+                }
+            }
+        }
+    }
     ///  우측 이미지
-    var isUserRightButton: Bool = true {
+    var isUserRightButton: Bool = false {
         willSet {
             if newValue {
                 self.addSubview(rightButton)
                 self.rightButton.snp.makeConstraints { make in
                     make.trailing.equalTo(containerView).offset(-10)
-                    make.bottom.equalTo(containerView).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-15)
+//                    make.centerX.equalToSuperview()
                     make.width.height.equalTo(30)
                 }
                 self.rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
@@ -117,13 +135,13 @@ class CustomNavigationBar: UIView {
         }
     }
     /// 내비게이션바 우측 텍스트버튼  생성 여부
-    var isUserRightTextButton: Bool = true {
+    var isUserRightTextButton: Bool = false {
         willSet {
             if newValue {
                 self.addSubview(rightTitleButton)
                 self.rightTitleButton.snp.makeConstraints { make in
                     make.trailing.equalTo(rightButton.snp.leading).offset(-10)
-                    make.bottom.equalTo(containerView).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-15)
                 }
                 self.rightTitleButton.addTarget(self, action: #selector(didTapRightTitleButton), for: .touchUpInside)
             }
@@ -166,6 +184,13 @@ class CustomNavigationBar: UIView {
             leftButton.setImage(newValue, for: .normal)
         }
     }
+    
+    var rightSearchButtonImage: UIImage = UIImage(systemName: "bell")! {
+        willSet {
+            searchButton.setImage(newValue, for: .normal)
+        }
+    }
+    
     // 네비게이션 우측 버튼 이미지 변경 (기본 = bell)
     var rightButtonImage: UIImage = UIImage(systemName: "bell")! {
         willSet {
@@ -177,13 +202,14 @@ class CustomNavigationBar: UIView {
     /// 컨테이너뷰
     let containerView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = .systemPink
         return containerView
     }()
     /// 네비게이션바 바텀라인
     let bottomLine: UIView = {
         let bottomLine = UIView()
-        bottomLine.backgroundColor = .lightGray.withAlphaComponent(0.4)
+        bottomLine.backgroundColor = .black
+//        bottomLine.backgroundColor = .lightGray.withAlphaComponent(1)
         return bottomLine
     }()
     /// 좌측 버튼
@@ -201,7 +227,7 @@ class CustomNavigationBar: UIView {
         config.baseForegroundColor = .black
         config.image = UIImage(systemName: "bell")
         config.cornerStyle = .medium
-        config.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 0, bottom: 0, trailing: 0)
+        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         var rightButton = UIButton(configuration: config)
         rightButton.isSelected = true
@@ -214,6 +240,21 @@ class CustomNavigationBar: UIView {
         imageView.image = UIImage(systemName: "circle.fill")
         imageView.tintColor = .red
         return imageView
+    }()
+    /// 우측 검색 버튼
+    let searchButton: UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .medium
+        config.baseBackgroundColor = .white
+        config.baseForegroundColor = .black
+        config.image = UIImage(systemName: "bell")
+        config.cornerStyle = .medium
+        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        var btn = UIButton(configuration: config)
+        btn.isSelected = true
+        btn.isHighlighted = true
+        return btn
     }()
     
     /// 알림 카운트 레이블
@@ -281,8 +322,9 @@ extension CustomNavigationBar {
         //MARK: AddSubView
         /// 컨테이너 뷰 관련
         self.addSubview(containerView)
-        containerView.addSubview(navigationTitleLabel)
-        self.addSubview(rightButton)
+        self.addSubview(navigationTitleLabel)
+//        self.addSubview(bottomLine)
+//        self.addSubview(rightButton)
         /// 알림 이미지뷰 관련
         noticeImage.addSubview(noticeCountLabel)
         
@@ -296,7 +338,7 @@ extension CustomNavigationBar {
         /// 네비게이션바 타이틀 위치 잡기
         navigationTitleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.bottom.equalTo(containerView).offset(-10)
+            make.bottom.equalTo(containerView).offset(-15)
         }
         
         /// 알림레이블 위치 잡기
