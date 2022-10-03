@@ -9,21 +9,36 @@
 /* Begin PBXBuildFile section */
 		E0FC2A5A28EAA15C00055538 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A5928EAA15C00055538 /* AppDelegate.swift */; };
 		E0FC2A5C28EAA15C00055538 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A5B28EAA15C00055538 /* SceneDelegate.swift */; };
-		E0FC2A5E28EAA15C00055538 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A5D28EAA15C00055538 /* ViewController.swift */; };
+		E0FC2A5E28EAA15C00055538 /* DetailSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A5D28EAA15C00055538 /* DetailSearchResult.swift */; };
 		E0FC2A6128EAA15C00055538 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A5F28EAA15C00055538 /* Main.storyboard */; };
 		E0FC2A6328EAA15E00055538 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A6228EAA15E00055538 /* Assets.xcassets */; };
 		E0FC2A6628EAA15E00055538 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A6428EAA15E00055538 /* LaunchScreen.storyboard */; };
+		E0FC2A7228EAE1DC00055538 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A7128EAE1DC00055538 /* CustomNavigationBar.swift */; };
+		E0FC2A7528EAE20500055538 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E0FC2A7428EAE20500055538 /* SnapKit */; };
+		E0FC2A7A28EAE24400055538 /* NanumGothic-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A7728EAE24400055538 /* NanumGothic-ExtraBold.ttf */; };
+		E0FC2A7B28EAE24400055538 /* NanumGothic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A7828EAE24400055538 /* NanumGothic-Bold.ttf */; };
+		E0FC2A7C28EAE24400055538 /* NanumGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FC2A7928EAE24400055538 /* NanumGothic-Regular.ttf */; };
+		E0FC2A7F28EAE29E00055538 /* UIFont+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A7E28EAE29D00055538 /* UIFont+EXT.swift */; };
+		E0FC2A8128EAE2C200055538 /* Int+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A8028EAE2C200055538 /* Int+EXT.swift */; };
+		E0FC2A8328EAE2DF00055538 /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FC2A8228EAE2DF00055538 /* UIView+EXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E0FC2A5628EAA15C00055538 /* Dailly_Challenge_DetailSearchResult.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dailly_Challenge_DetailSearchResult.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FC2A5928EAA15C00055538 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0FC2A5B28EAA15C00055538 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E0FC2A5D28EAA15C00055538 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E0FC2A5D28EAA15C00055538 /* DetailSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSearchResult.swift; sourceTree = "<group>"; };
 		E0FC2A6028EAA15C00055538 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E0FC2A6228EAA15E00055538 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0FC2A6528EAA15E00055538 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0FC2A6728EAA15E00055538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0FC2A7128EAE1DC00055538 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		E0FC2A7728EAE24400055538 /* NanumGothic-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-ExtraBold.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (5) 3/NanumGothic-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E0FC2A7828EAE24400055538 /* NanumGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Bold.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (5) 3/NanumGothic-Bold.ttf"; sourceTree = "<group>"; };
+		E0FC2A7928EAE24400055538 /* NanumGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumGothic-Regular.ttf"; path = "../../../../../../Downloads/Nanum_Gothic (5) 3/NanumGothic-Regular.ttf"; sourceTree = "<group>"; };
+		E0FC2A7E28EAE29D00055538 /* UIFont+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+EXT.swift"; sourceTree = "<group>"; };
+		E0FC2A8028EAE2C200055538 /* Int+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+EXT.swift"; sourceTree = "<group>"; };
+		E0FC2A8228EAE2DF00055538 /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0FC2A7528EAE20500055538 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +72,70 @@
 		E0FC2A5828EAA15C00055538 /* Dailly_Challenge_DetailSearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				E0FC2A7D28EAE28A00055538 /* EXT */,
+				E0FC2A7628EAE22500055538 /* Fonts */,
+				E0FC2A7028EAE1C900055538 /* Custom */,
+				E0FC2A6F28EAE18500055538 /* Models */,
+				E0FC2A6E28EAE17C00055538 /* Views */,
+				E0FC2A6D28EAE17200055538 /* Controllers */,
 				E0FC2A5928EAA15C00055538 /* AppDelegate.swift */,
 				E0FC2A5B28EAA15C00055538 /* SceneDelegate.swift */,
-				E0FC2A5D28EAA15C00055538 /* ViewController.swift */,
+				E0FC2A5D28EAA15C00055538 /* DetailSearchResult.swift */,
 				E0FC2A5F28EAA15C00055538 /* Main.storyboard */,
 				E0FC2A6228EAA15E00055538 /* Assets.xcassets */,
 				E0FC2A6428EAA15E00055538 /* LaunchScreen.storyboard */,
 				E0FC2A6728EAA15E00055538 /* Info.plist */,
 			);
 			path = Dailly_Challenge_DetailSearchResult;
+			sourceTree = "<group>";
+		};
+		E0FC2A6D28EAE17200055538 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E0FC2A6E28EAE17C00055538 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E0FC2A6F28EAE18500055538 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E0FC2A7028EAE1C900055538 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				E0FC2A7128EAE1DC00055538 /* CustomNavigationBar.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		E0FC2A7628EAE22500055538 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E0FC2A7828EAE24400055538 /* NanumGothic-Bold.ttf */,
+				E0FC2A7728EAE24400055538 /* NanumGothic-ExtraBold.ttf */,
+				E0FC2A7928EAE24400055538 /* NanumGothic-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E0FC2A7D28EAE28A00055538 /* EXT */ = {
+			isa = PBXGroup;
+			children = (
+				E0FC2A7E28EAE29D00055538 /* UIFont+EXT.swift */,
+				E0FC2A8028EAE2C200055538 /* Int+EXT.swift */,
+				E0FC2A8228EAE2DF00055538 /* UIView+EXT.swift */,
+			);
+			path = EXT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +154,9 @@
 			dependencies = (
 			);
 			name = Dailly_Challenge_DetailSearchResult;
+			packageProductDependencies = (
+				E0FC2A7428EAE20500055538 /* SnapKit */,
+			);
 			productName = Dailly_Challenge_DetailSearchResult;
 			productReference = E0FC2A5628EAA15C00055538 /* Dailly_Challenge_DetailSearchResult.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +185,9 @@
 				Base,
 			);
 			mainGroup = E0FC2A4D28EAA15C00055538;
+			packageReferences = (
+				E0FC2A7328EAE20500055538 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E0FC2A5728EAA15C00055538 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +202,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0FC2A7A28EAE24400055538 /* NanumGothic-ExtraBold.ttf in Resources */,
 				E0FC2A6628EAA15E00055538 /* LaunchScreen.storyboard in Resources */,
 				E0FC2A6328EAA15E00055538 /* Assets.xcassets in Resources */,
+				E0FC2A7C28EAE24400055538 /* NanumGothic-Regular.ttf in Resources */,
 				E0FC2A6128EAA15C00055538 /* Main.storyboard in Resources */,
+				E0FC2A7B28EAE24400055538 /* NanumGothic-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0FC2A5E28EAA15C00055538 /* ViewController.swift in Sources */,
+				E0FC2A7F28EAE29E00055538 /* UIFont+EXT.swift in Sources */,
+				E0FC2A7228EAE1DC00055538 /* CustomNavigationBar.swift in Sources */,
+				E0FC2A8328EAE2DF00055538 /* UIView+EXT.swift in Sources */,
+				E0FC2A5E28EAA15C00055538 /* DetailSearchResult.swift in Sources */,
+				E0FC2A8128EAE2C200055538 /* Int+EXT.swift in Sources */,
 				E0FC2A5A28EAA15C00055538 /* AppDelegate.swift in Sources */,
 				E0FC2A5C28EAA15C00055538 /* SceneDelegate.swift in Sources */,
 			);
@@ -358,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E0FC2A7328EAE20500055538 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E0FC2A7428EAE20500055538 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0FC2A7328EAE20500055538 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E0FC2A4E28EAA15C00055538 /* Project object */;
 }
