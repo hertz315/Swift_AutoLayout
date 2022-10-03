@@ -295,7 +295,7 @@ extension CustomNavigationBar {
         }
         /// 네비게이션바 타이틀 위치 잡기
         navigationTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(16)
             make.bottom.equalTo(containerView).offset(-10)
         }
         

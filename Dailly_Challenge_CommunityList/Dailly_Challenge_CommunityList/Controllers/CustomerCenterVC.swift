@@ -139,10 +139,11 @@ final class CustomerCenterVC: UIViewController {
         /// 버티컬 카테고리 쎌 레지스터
         let verticalUiNib = UINib(nibName: VerticalCategoryCVC.nibName, bundle: nil)
         collectionView.register(verticalUiNib, forCellWithReuseIdentifier: VerticalCategoryCVC.reuseIdentifier)
+        // ⭐️⭐️
         /// 버티컬 카테고리 푸터 레지스터
         let detailCategoryFooter = UINib(nibName: DetailCategoryFooter.nibName, bundle: nil)
         collectionView.register(detailCategoryFooter, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DetailCategoryFooter.reuseIdentifier)
-        
+        // ⭐️⭐️
         /// 델리게이트 등록
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -200,9 +201,11 @@ extension CustomerCenterVC: UICollectionViewDelegate {
         case (UICollectionView.elementKindSectionHeader, 1):
             let recommendedHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DetailCategoryHeader.reuseIdentifier, for: indexPath) as! DetailCategoryHeader
             return recommendedHeader
+        // ⭐️⭐️
         case (UICollectionView.elementKindSectionFooter, 2):
             let detailFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DetailCategoryFooter.reuseIdentifier, for: indexPath) as! DetailCategoryFooter
             return detailFooter
+        // ⭐️⭐️
         default:
             return UICollectionReusableView()
         }
@@ -316,6 +319,7 @@ extension CustomerCenterVC {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(2))
         /// 그룹사이즈로 그룹만들기
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        // ⭐️⭐️
         /// 풋터 사이즈
         let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         /// 풋터만들기
@@ -327,6 +331,7 @@ extension CustomerCenterVC {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         /// 섹션반환
         return section
+        // ⭐️⭐️
     }
 }
 
