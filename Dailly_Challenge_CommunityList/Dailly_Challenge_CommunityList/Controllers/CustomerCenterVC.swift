@@ -9,32 +9,35 @@ import UIKit
 import SnapKit
 
 final class CustomerCenterVC: UIViewController {
-    
     // MARK: - 전역변수
-    // 쎌에 뿌려줄 데이터 배열
-    var customerCenterSectionsDataArray = [CustomerCenterSectionModel]()
+    /// 섹션  데이터 모델을 만들기 위해서 -> 2차원 배열로 데이터 모델 생성
+    var categoryDataList : [[BaseModel]] = []
+    
+    /// 선택된 카테고리
+    var selectedCategory: Category = .all {
+        didSet {
+            print("카테고리 체크: selectedCategory: didSet : \(selectedCategory.title)")
+        }
+    }
     
     // MARK: - 네비게이션 바 생성
     // 네비게이션바 생성
     lazy var customNavigationBar: CustomNavigationBar = {
         let navigationBar = CustomNavigationBar()
-        navigationBar.titleText = "고객센터"
         /// 네비게이션바 타이틀 텍스트 지정
         navigationBar.titleText = "고객센터"
         /// 네비게이션바 높이 지정, 미지정시 60
         navigationBar.navigationHeight = 50
         /// 네비게이션 우측 텍스트 지정
-        navigationBar.rightTitleText = "채팅"
+        navigationBar.rightTextButtonLabel = "채팅"
         /// 네비게이션 알림 텍스트
         navigationBar.noticeText = "2"
         /// 네비게이션바 왼쪽에 버튼을 넣을것인지
         navigationBar.isUseLeftButton = false
-        /// 네비게이션바 오른쪽에이미지를 넣을것인지
-        navigationBar.isUserNavigationRightImageView = true
-        /// 네비게이션바오른쪽에 텍스트를 넣을것인지
-        navigationBar.isNavigationBarRightTextLabel = true
+        /// 네비게이션바오른쪽에 텍스트버튼을 넣을것인지
+        navigationBar.isUserRightTextButton = true
         /// 네비게이션바오른쪽에 버튼을 넣을것인지
-        navigationBar.isUserNavigationRightButton = true
+        navigationBar.isUserRightButton = true
         /// 네비게이션바에 알림을 넣을것인지
         navigationBar.isNoticeCountMode = true
         return navigationBar
@@ -62,9 +65,25 @@ final class CustomerCenterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        setupCollectionViewData()
         setupLayout()
+        customNavigationBar.delegate = self
+        setupCollectionViewData()
     }
+    
+    /// 컬렉션뷰 데이터 관련
+    fileprivate func setupCollectionViewData() {
+        let categoryModels: [BaseModel] = Category.allCases.map{$0.getCategoryModel()}
+        let recommendedList: [BaseModel] = DetailCategory.getRecommandedCategories()
+        let allList: [BaseModel] = DetailCategory.getCategoryAll()
+        
+        /// 3개의 섹션 등록
+        categoryDataList.append(categoryModels)
+        categoryDataList.append(recommendedList)
+        categoryDataList.append(allList)
+        
+        collectionView.reloadData()
+    }
+    
     /// 네비게이션바 컬렉션바 위치잡기
     fileprivate func setupLayout() {
         /// 네비게이션바 오토레이아웃
@@ -81,21 +100,6 @@ final class CustomerCenterVC: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
-    fileprivate func setupCollectionViewData() {
-        // mainKategories
-        let mainKategoriesModel = MainKategories.getCustomerCenterModel()
-        let mainKaterogiesSection = CustomerCenterSectionModel.mainKategories(mainKategoriesModel)
-        // horizentalKategories
-        let horizentalKategories = DetailHorizentalKategories.getDetailHorizentalKategories()
-        let horizentalSectionKategories = CustomerCenterSectionModel.detailHorizentalKategories(horizentalKategories)
-        // VerticalKategories
-        let verticalKategories = DetailVerticalKategories.getDetailVerticalKategories()
-        let verticalSectionKategories = CustomerCenterSectionModel.detailVerticalKategories(verticalKategories)
-        self.customerCenterSectionsDataArray = [mainKaterogiesSection, horizentalSectionKategories, verticalSectionKategories]
-        self.collectionView.reloadData()
-    }
-    
     // MARK: - 컴포지셔널 레이아웃 생성
     static func getCollectionViewCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout {
@@ -114,30 +118,30 @@ final class CustomerCenterVC: UIViewController {
         }
         return layout
     }
-    
     // MARK: - 컬렉션뷰 레지스터, 델리게이트 채택
     fileprivate func setupCollectionView() {
         /// 메인 카테고리 쎌 레지스터
-        let uiNib = UINib(nibName: "MainKategoriesCVC", bundle: nil)
-        collectionView.register(uiNib, forCellWithReuseIdentifier: MainKategoriesCVC.reuseIdentifier)
+        let uiNib = UINib(nibName: CategoryCVC.nibName, bundle: nil)
+        collectionView.register(uiNib, forCellWithReuseIdentifier: CategoryCVC.reuseIdentifier)
         
         /// 메인 카테고리 헤더 레지스터
-        let mainHeaderUiNib = UINib(nibName: "MainKategoriesHeader", bundle: nil)
-        collectionView.register(mainHeaderUiNib, forSupplementaryViewOfKind: "mainHeader", withReuseIdentifier: MainKategoriesHeader.reuseIdentifier)
+        let mainHeaderUiNib = UINib(nibName: CategoryHeader.nibName, bundle: nil)
+        collectionView.register(mainHeaderUiNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeader.reuseIdentifier)
         /// 메인 카테고리 푸터 레지스터
-        let mainFooterUiNib = UINib(nibName: MainKategoriesFooter.nibName, bundle: nil)
-        collectionView.register(mainFooterUiNib, forSupplementaryViewOfKind: "mainFooter", withReuseIdentifier: MainKategoriesFooter.reuseIdentifier)
+        let mainFooterUiNib = UINib(nibName: CategoryFooter.nibName, bundle: nil)
+        collectionView.register(mainFooterUiNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CategoryFooter.reuseIdentifier)
         /// 호리젠탈 카테고리 쎌 레지스터
-        let horizentalnUiNib = UINib(nibName: HorizentalKategoriesCVC.nibName, bundle: nil)
-        collectionView.register(horizentalnUiNib, forCellWithReuseIdentifier: HorizentalKategoriesCVC.reuseIdentifier)
+        let horizentalnUiNib = UINib(nibName: RecommendedcategoryCVC.nibName, bundle: nil)
+        collectionView.register(horizentalnUiNib, forCellWithReuseIdentifier: RecommendedcategoryCVC.reuseIdentifier)
         /// 호리젠탈 카테고리 헤더 레지스터
-        let horizentalHeaderUiNib = UINib(nibName: HorizentalKategoriesHeader.nibName, bundle: nil)
-        collectionView.register(horizentalHeaderUiNib, forSupplementaryViewOfKind: "horizentalHeader", withReuseIdentifier: HorizentalKategoriesHeader.reuseIdentifier)
+        let horizentalHeaderUiNib = UINib(nibName: DetailCategoryHeader.nibName, bundle: nil)
+        collectionView.register(horizentalHeaderUiNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DetailCategoryHeader.reuseIdentifier)
         /// 버티컬 카테고리 쎌 레지스터
-        let verticalUiNib = UINib(nibName: VerticalKategoriesCVC.nibName, bundle: nil)
-        collectionView.register(verticalUiNib, forCellWithReuseIdentifier: VerticalKategoriesCVC.reuseIdentifier)
-        
+        let verticalUiNib = UINib(nibName: VerticalCategoryCVC.nibName, bundle: nil)
+        collectionView.register(verticalUiNib, forCellWithReuseIdentifier: VerticalCategoryCVC.reuseIdentifier)
         /// 버티컬 카테고리 푸터 레지스터
+        let detailCategoryFooter = UINib(nibName: DetailCategoryFooter.nibName, bundle: nil)
+        collectionView.register(detailCategoryFooter, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: DetailCategoryFooter.reuseIdentifier)
         
         /// 델리게이트 등록
         self.collectionView.delegate = self
@@ -145,99 +149,102 @@ final class CustomerCenterVC: UIViewController {
         /// 쎌 셀프 사이징
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
-    
-    
 }
-
-
-
 
 
 // MARK: - 컬렉션뷰 델리게이트 관련
 extension CustomerCenterVC: UICollectionViewDelegate {
-    /// 컬렉션뷰 뷰 등록
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+    /// 쎌이 선택될때마다 호출되는 메서드
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if kind == "mainHeader" {
-            let mainHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainKategoriesHeader.reuseIdentifier, for: indexPath) as! MainKategoriesHeader
-            return mainHeaderView
-        } else if kind == "mainFooter" {
-            let mainFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainKategoriesFooter.reuseIdentifier, for: indexPath) as! MainKategoriesFooter
-            return mainFooterView
-        } else if kind == "horizentalHeader" {
-            let horizentalHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HorizentalKategoriesHeader.reuseIdentifier, for: indexPath) as! HorizentalKategoriesHeader
-            return horizentalHeaderView
-        } else {
-            return UICollectionReusableView()
+        /// 0번째 섹션이 아니라면 리턴
+        if indexPath.section != 0 {return}
+        /// 선택된 아이템의 카테고리를 카테고리 플래그 카테고리 목록에 할당한다
+        if let selectedItem = categoryDataList[0][indexPath.item] as? CategoryModel {
+            self.selectedCategory = selectedItem.category
+            print("카테고리 체크: selectedItem.category: \(selectedItem.category.title)")
+            self.collectionView.reloadData()
         }
         
+        switch selectedCategory {
+        case .all:
+            categoryDataList[2] = DetailCategory.getCategoryAll()
+            self.collectionView.reloadData()
+        case .inquiry:
+            categoryDataList[2] = DetailCategory.getCategoryInquiry()
+            self.collectionView.reloadData()
+        case .price:
+            categoryDataList[2] = DetailCategory.getCategoryPrice()
+            self.collectionView.reloadData()
+        case .searchExpert:
+            categoryDataList[2] = DetailCategory.getCategorySearchExpert()
+            self.collectionView.reloadData()
+        case .order:
+            categoryDataList[2] = DetailCategory.getCategoryOrder()
+            self.collectionView.reloadData()
+        }
     }
-}
+    
+    /// 컬렉션뷰 헤더 풋터뷰 등록
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionIndex = indexPath.section
+        /// 섹션 인덱스와, kind 를 비교하여 헤더 할당하기
+        switch (kind, sectionIndex) {
+        case (UICollectionView.elementKindSectionHeader, 0):
+            let mainHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryHeader.reuseIdentifier, for: indexPath) as! CategoryHeader
+            return mainHeader
+        case (UICollectionView.elementKindSectionFooter, 0):
+            let mainFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryFooter.reuseIdentifier, for: indexPath) as! CategoryFooter
+            return mainFooter
+        case (UICollectionView.elementKindSectionHeader, 1):
+            let recommendedHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DetailCategoryHeader.reuseIdentifier, for: indexPath) as! DetailCategoryHeader
+            return recommendedHeader
+        case (UICollectionView.elementKindSectionFooter, 2):
+            let detailFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DetailCategoryFooter.reuseIdentifier, for: indexPath) as! DetailCategoryFooter
+            return detailFooter
+        default:
+            return UICollectionReusableView()
+        }
+    }
 
+}
 
 // MARK: - 컬렉션뷰 데이터소스 관련
 extension CustomerCenterVC: UICollectionViewDataSource {
-    
+    /// 섹션이 몇개???
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return customerCenterSectionsDataArray.count
+        print(categoryDataList.count, "🍎🍎🍎")
+        return categoryDataList.count
     }
-    
+    /// 각 세션당 아이템이 몇개???
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(customerCenterSectionsDataArray.count, "⭐️")
-        switch self.customerCenterSectionsDataArray[section] {
-            
-        case let .mainKategories(mainKategoriesModel):
-            print(mainKategoriesModel.count, "🍎")
-            return mainKategoriesModel.count
-        case let .detailHorizentalKategories(detailHorizentalKategoriesModel):
-            print(detailHorizentalKategoriesModel.count, "🍎🍎")
-            return detailHorizentalKategoriesModel.count
-        case let .detailVerticalKategories(detailVerticalKategoriesModel):
-            print(detailVerticalKategoriesModel.count, "🍎🍎🍎")
-            return detailVerticalKategoriesModel.count
-        }
-        
+        return categoryDataList[section].count
     }
     
+    /// 쎌들의 아이템 요소
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellData: BaseModel = categoryDataList[indexPath.section][indexPath.item]
+        let sectionIndex = indexPath.section
         
-        switch self.customerCenterSectionsDataArray[indexPath.section] {
-        case let .mainKategories(mainKategoriesModel):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainKategoriesCVC.reuseIdentifier, for: indexPath) as! MainKategoriesCVC
-            let cellData = mainKategoriesModel[indexPath.item]
-            cell.kategorieImageView.image = cellData.kategoriesImage
-            cell.kategorieLabel.text = cellData.kategoriesName
+        switch sectionIndex {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCVC.reuseIdentifier, for: indexPath) as! CategoryCVC
+            cell.applyUI(cellData, self.selectedCategory)
             return cell
-            
-        case let .detailHorizentalKategories(detailHorizentalKategoriesModel):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HorizentalKategoriesCVC.reuseIdentifier, for: indexPath) as! HorizentalKategoriesCVC
-            let cellData = detailHorizentalKategoriesModel[indexPath.item]
-            cell.kategoriesTitleLabel.text = cellData.kategoriesLabel
-            cell.kategoriesBodyLabel.text = cellData.bodyTextLabel
-            cell.heartButton.imageView?.image = cellData.likeImage
-            cell.messageButton.imageView?.image = cellData.chatImage
-            cell.likeCountLabel.text = cellData.likeCountLabel
-            cell.chatCountLabel.text = cellData.chatCountLabel
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedcategoryCVC.reuseIdentifier, for: indexPath) as! RecommendedcategoryCVC
+            cell.apply(cellData)
             return cell
-            
-        case let .detailVerticalKategories(detailVerticalKategoriesModel):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalKategoriesCVC.reuseIdentifier, for: indexPath) as! VerticalKategoriesCVC
-            let cellData = detailVerticalKategoriesModel[indexPath.item]
-            cell.kategoriesTitleLabel.text = cellData.kategoriesLabel
-            cell.kategoriesBodyTitleLabel.text = cellData.titleLabel
-            cell.kategoriesBodyLabel.text = cellData.bodyTextLabel
-            cell.kategoriesBodyImage.image = cellData.mainImage
-            cell.kategoriesTagLabel.text = cellData.hashTag
-            cell.heartButton.imageView?.image = cellData.likeImage
-            cell.likeCountLabel.text = cellData.likeCountLabel
-            cell.chatButton.imageView?.image = cellData.chatImage
-            cell.chatCountLabel.text = cellData.chatCountLabel
-            cell.timeDifferenceLabel.text = cellData.initDate
-            
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalCategoryCVC.reuseIdentifier, for: indexPath) as! VerticalCategoryCVC
+            cell.apply(cellData)
             return cell
+        default:
+            return UICollectionViewCell()
         }
     }
-    
+   
     
 }
 
@@ -261,11 +268,11 @@ extension CustomerCenterVC {
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(65))
         /// 헤더만들기
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: "mainHeader", alignment: .top)
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         /// 풋터사이즈 -
         let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(30))
         /// 풋터만들기
-        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: "mainFooter", alignment: .bottom)
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
         /// 섹션
         let section = NSCollectionLayoutSection(group: group)
         /// 섹션에 헤더, 풋터 등록
@@ -289,7 +296,7 @@ extension CustomerCenterVC {
         /// 헤더사이즈 -
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(40))
         /// 헤더 만들기
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "horizentalHeader", alignment: .top)
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         /// 섹션
         let section = NSCollectionLayoutSection(group: group)
         /// 섹션에 헤더 등록
@@ -309,25 +316,33 @@ extension CustomerCenterVC {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(2))
         /// 그룹사이즈로 그룹만들기
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        /// 헤더
+        /// 풋터 사이즈
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        /// 풋터만들기
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
         /// 섹션
         let section = NSCollectionLayoutSection(group: group)
-        /// 섹션의 스크롤 설정
-        section.orthogonalScrollingBehavior = .continuous
+        /// 섹션에 헤더, 풋터 등록
+        section.boundarySupplementaryItems = [footer]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         /// 섹션반환
         return section
     }
 }
 
-
 extension CustomerCenterVC: CustomNavigationBarProtocol {
+    func didTapLeftButton() {
+        print("")
+    }
+    
+    /// 알림버튼을 누르면
     func didTapRightButton() {
         print("👍🏻")
     }
     
-    func didTapLeftButton() {
-        print("⭐️")
+    ///  채팅 텍스트버튼을 누르면 호출
+    func didTapRightTitleButton() {
+        print("🍎")
+        customNavigationBar.isVisibleNoticeMode = true
     }
-    
-    
 }

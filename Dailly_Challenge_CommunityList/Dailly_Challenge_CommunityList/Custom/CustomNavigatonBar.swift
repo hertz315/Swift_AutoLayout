@@ -11,6 +11,7 @@ import SnapKit
 protocol CustomNavigationBarProtocol {
     func didTapLeftButton()
     func didTapRightButton()
+    func didTapRightTitleButton()
 }
 
 class CustomNavigationBar: UIView {
@@ -32,10 +33,10 @@ class CustomNavigationBar: UIView {
             navigationTitleLabel.text = newValue
         }
     }
-    /// 네비게이션 우측 텍스트
-    var rightTitleText: String = "" {
+    /// 네비게이션 우측 텍스트버튼 라벨
+    var rightTextButtonLabel: String = "" {
         willSet {
-            rightNavigationTitleLabel.text = newValue
+            rightTitleButton.setTitle(newValue, for: .normal)
         }
     }
     /// 알림 텍스트 변경
@@ -53,7 +54,7 @@ class CustomNavigationBar: UIView {
         }
     }
     /// 네비게이션바 하단 크림자 생성여부
-    var isDrawShadow: Bool = false {
+    var isDrawShadow: Bool = true {
         willSet {
             if newValue {
                 self.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -70,7 +71,7 @@ class CustomNavigationBar: UIView {
         }
     }
     /// 네비게이션 하단 선 생성 여부
-    var isDrawBottomLine: Bool = false {
+    var isDrawBottomLine: Bool = true {
         willSet {
             if newValue {
                 self.addSubview(bottomLine)
@@ -83,49 +84,8 @@ class CustomNavigationBar: UIView {
             }
         }
     }
-    
-    /// 우측 버튼 생성 여부
-    var isUserNavigationRightImageView: Bool = false {
-        willSet {
-            if newValue {
-                self.addSubview(rightButtonImageView)
-                self.rightButtonImageView.snp.makeConstraints { make in
-                    make.trailing.equalTo(containerView).offset(-10)
-                    make.bottom.equalTo(containerView).offset(-10)
-                    make.width.height.equalTo(30)
-                }
-            }
-        }
-    }
-    
-    ///  우측 이미지
-    var isUserNavigationRightButton: Bool = false {
-        willSet {
-            if newValue {
-                rightButtonImageView.addSubview(rightButton)
-                self.rightButton.snp.makeConstraints { make in
-                    make.trailing.equalTo(containerView).offset(-10)
-                    make.bottom.equalTo(containerView).offset(-10)
-                    make.width.height.equalTo(30)
-                }
-                self.rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
-            }
-        }
-    }
-    /// 내비게이션바 우측 텍스트 생성 여부
-    var isNavigationBarRightTextLabel: Bool = false {
-        willSet {
-            if newValue {
-                self.addSubview(rightNavigationTitleLabel)
-                self.rightNavigationTitleLabel.snp.makeConstraints { make in
-                    make.trailing.equalTo(rightButtonImageView.snp.leading).offset(-10)
-                    make.bottom.equalTo(containerView).offset(-10)
-                }
-            }
-        }
-    }
     /// 네비게이션 좌측 버튼 생성 여부
-    var isUseLeftButton: Bool = false {
+    var isUseLeftButton: Bool = true {
         willSet {
             if newValue {
                 self.addSubview(leftButton)
@@ -142,6 +102,33 @@ class CustomNavigationBar: UIView {
             }
         }
     }
+    ///  우측 이미지
+    var isUserRightButton: Bool = true {
+        willSet {
+            if newValue {
+                self.addSubview(rightButton)
+                self.rightButton.snp.makeConstraints { make in
+                    make.trailing.equalTo(containerView).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-10)
+                    make.width.height.equalTo(30)
+                }
+                self.rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
+            }
+        }
+    }
+    /// 내비게이션바 우측 텍스트버튼  생성 여부
+    var isUserRightTextButton: Bool = true {
+        willSet {
+            if newValue {
+                self.addSubview(rightTitleButton)
+                self.rightTitleButton.snp.makeConstraints { make in
+                    make.trailing.equalTo(rightButton.snp.leading).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-10)
+                }
+                self.rightTitleButton.addTarget(self, action: #selector(didTapRightTitleButton), for: .touchUpInside)
+            }
+        }
+    }
     /// 알림 카운트모드 생성 여부
     var isNoticeCountMode: Bool = false {
         willSet {
@@ -149,28 +136,42 @@ class CustomNavigationBar: UIView {
                 self.addSubview(noticeImage)
                 self.noticeImage.snp.makeConstraints { make in
                     make.width.height.equalTo(23)
-                    make.trailing.equalTo(rightButtonImageView.snp.leading).offset(-3)
+                    make.trailing.equalTo(rightButton.snp.leading).offset(-3)
                     make.bottom.equalTo(containerView).offset(-10)
                 }
-                self.rightNavigationTitleLabel.snp.remakeConstraints { make in
+                self.rightTitleButton.snp.remakeConstraints { make in
                     make.trailing.equalTo(noticeImage.snp.leading).offset(0)
                     make.bottom.equalTo(containerView).offset(-10)
                 }
             }
         }
     }
+    /// 알림 카운트 표시 여부
+    var isVisibleNoticeMode: Bool = false {
+        willSet {
+            if newValue {
+                noticeImage.removeFromSuperview()
+                self.addSubview(rightTitleButton)
+                self.rightTitleButton.snp.makeConstraints { make in
+                    make.trailing.equalTo(rightButton.snp.leading).offset(-10)
+                    make.bottom.equalTo(containerView).offset(-10)
+                }
+            }
+        }
+    }
+    
     /// 네비게이션 좌측 버튼 이미지 생성여부
     var leftButtonImage: UIImage = UIImage(systemName: "chevron.backward")! {
         willSet {
             leftButton.setImage(newValue, for: .normal)
         }
     }
-//    // 네비게이션 우측 버튼 이미지 변경 (기본 = bell)
-//    var rightButtonImage: UIImage = UIImage(systemName: "bell")! {
-//        willSet {
-//            rightButton.setImage(newValue, for: .normal)
-//        }
-//    }
+    // 네비게이션 우측 버튼 이미지 변경 (기본 = bell)
+    var rightButtonImage: UIImage = UIImage(systemName: "bell")! {
+        willSet {
+            rightButton.setImage(newValue, for: .normal)
+        }
+    }
     
     // MARK: - 구성요소
     /// 컨테이너뷰
@@ -192,12 +193,19 @@ class CustomNavigationBar: UIView {
         leftButton.tintColor = .black
         return leftButton
     }()
-    /// 우측 버튼
+    /// 우측 알림버튼
     let rightButton: UIButton = {
-        let rightButton = UIButton()
-//        rightButton.setImage(UIImage(systemName: "bell"), for: .normal)
-        rightButton.tintColor = .black
-        rightButton.backgroundColor = .clear
+        var config = UIButton.Configuration.filled()
+        config.buttonSize = .medium
+        config.baseBackgroundColor = .white
+        config.baseForegroundColor = .black
+        config.image = UIImage(systemName: "bell")
+        config.cornerStyle = .medium
+        config.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 0, bottom: 0, trailing: 0)
+        
+        var rightButton = UIButton(configuration: config)
+        rightButton.isSelected = true
+        rightButton.isHighlighted = true
         return rightButton
     }()
     /// 알림 카운트 이미지
@@ -218,14 +226,21 @@ class CustomNavigationBar: UIView {
         return label
     }()
     
-    /// 네비게이션바 우측 타이틀
-    let rightNavigationTitleLabel: UILabel = {
-        var rightTitleLabel = UILabel()
-        rightTitleLabel.sizeToFit()
-        rightTitleLabel.textColor = .black
-        rightTitleLabel.font = UIFont(name: "NanumGothic", size: 16)
-        rightTitleLabel.font = rightTitleLabel.font.regular
-        return rightTitleLabel
+    /// 네비게이션바 우측 타이틀버튼
+    let rightTitleButton: UIButton = {
+        var config = UIButton.Configuration.gray()
+        config.title = "채팅"
+        config.buttonSize = .medium
+        config.baseBackgroundColor = .white
+        config.baseForegroundColor = .black
+        config.cornerStyle = .medium
+        config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 0)
+        
+        var rightTextButton = UIButton(configuration: config)
+        rightTextButton.isSelected = true
+        rightTextButton.isHighlighted = true
+        rightTextButton.contentVerticalAlignment = .bottom
+        return rightTextButton
     }()
     
     /// 네비게이션바 타이틀
@@ -238,16 +253,6 @@ class CustomNavigationBar: UIView {
         return navigationTitleLabel
     }()
     
-    /// 네비게이션 우측 버튼 이미지
-    let rightButtonImageView: UIImageView = {
-        var imageView = UIImageView()
-        imageView.image = UIImage(systemName: "bell")
-        imageView.tintColor = .black
-        imageView.image = imageView.image?.withAlignmentRectInsets(UIEdgeInsets(top: -7, left: -3, bottom: 0, right: -3))
-        return imageView
-    }()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -259,10 +264,7 @@ class CustomNavigationBar: UIView {
 }
 
 extension CustomNavigationBar {
-    /**
-     * @ 초기 레이아웃 설정
-     * coder : sanghyeon
-     */
+   
     func setupView() {
         //MARK: ViewDefine
         let safeArea = self.safeAreaLayoutGuide
@@ -280,7 +282,7 @@ extension CustomNavigationBar {
         /// 컨테이너 뷰 관련
         self.addSubview(containerView)
         containerView.addSubview(navigationTitleLabel)
-        containerView.addSubview(rightNavigationTitleLabel)
+        self.addSubview(rightButton)
         /// 알림 이미지뷰 관련
         noticeImage.addSubview(noticeCountLabel)
         
@@ -307,10 +309,7 @@ extension CustomNavigationBar {
         
         //MARK: Delegate
     }
-    /**
-     * @ 네비게이션 왼쪽 버튼 클릭 함수
-     * coder : sanghyeon
-     */
+   
     @objc func didTapLeftButton() {
         guard let delegate = self.delegate else { return }
         delegate.didTapLeftButton()
@@ -319,6 +318,10 @@ extension CustomNavigationBar {
     @objc func didTapRightButton() {
         guard let delegate = self.delegate else { return }
         delegate.didTapRightButton()
+    }
+    @objc func didTapRightTitleButton() {
+        guard let delegate = self.delegate else {return}
+        delegate.didTapRightTitleButton()
     }
     
 }

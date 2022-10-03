@@ -23,7 +23,6 @@ class CustomTextField: UIView {
                 // 컨테이너 뷰의 위치와 크기 잡기
                 // 스택뷰의 위치와 크기 잡기
                 stackView.snp.makeConstraints { make in
-//                    make.leading.trailing.top.bottom.equalTo(containerView).offset(0)
                     make.leading.equalTo(containerView).offset(10)
                     make.top.equalTo(containerView).offset(10)
                     make.bottom.equalTo(containerView).offset(-10)
