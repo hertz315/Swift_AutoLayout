@@ -4,7 +4,7 @@
 target 'Dailly_Challenge_DetailSearchResult' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-	pod 'DropDown'
+	
   # Pods for Dailly_Challenge_DetailSearchResult
-
+	pod 'DropDown', '2.3.13'
 end
