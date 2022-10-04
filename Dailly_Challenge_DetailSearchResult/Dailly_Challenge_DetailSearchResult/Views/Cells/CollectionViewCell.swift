@@ -9,6 +9,9 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    static let nibName = "CollectionViewCell"
+    static let reuseIdentifier = "CollectionViewCell"
+    
     // MARK: - @IBOulet
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productLabel: UILabel!

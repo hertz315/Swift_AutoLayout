@@ -8,5 +8,8 @@
 import UIKit
 
 class CollectionViewHeader: UICollectionReusableView {
-        
+    static let nibName = "CollectionViewHeader"
+    static let reuseIdentifier = "CollectionViewHeader"
+    
+    
 }

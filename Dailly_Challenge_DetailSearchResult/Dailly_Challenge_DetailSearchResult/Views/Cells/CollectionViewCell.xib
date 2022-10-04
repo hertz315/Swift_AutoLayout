@@ -52,7 +52,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2h-lb-Jwo">
-                        <rect key="frame" x="114" y="181" width="40" height="40"/>
+                        <rect key="frame" x="114" y="161" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="hpx-9R-1If"/>
                             <constraint firstAttribute="width" constant="40" id="n9x-J0-NtE"/>
@@ -67,7 +67,7 @@
                     <constraint firstItem="tu0-hf-nQc" firstAttribute="top" secondItem="0V3-T4-Ydz" secondAttribute="top" id="MOK-CD-CBv"/>
                     <constraint firstAttribute="trailing" secondItem="W2h-lb-Jwo" secondAttribute="trailing" constant="10" id="YcK-3Q-rwD"/>
                     <constraint firstAttribute="bottom" secondItem="tu0-hf-nQc" secondAttribute="bottom" id="bfb-ks-ePU"/>
-                    <constraint firstItem="W2h-lb-Jwo" firstAttribute="bottom" secondItem="3Ap-1f-zPh" secondAttribute="bottom" constant="-10" id="piq-wK-Li6"/>
+                    <constraint firstItem="W2h-lb-Jwo" firstAttribute="bottom" secondItem="3Ap-1f-zPh" secondAttribute="bottom" constant="-30" id="piq-wK-Li6"/>
                     <constraint firstItem="tu0-hf-nQc" firstAttribute="leading" secondItem="0V3-T4-Ydz" secondAttribute="leading" id="qFf-p8-c2b"/>
                 </constraints>
             </collectionViewCellContentView>

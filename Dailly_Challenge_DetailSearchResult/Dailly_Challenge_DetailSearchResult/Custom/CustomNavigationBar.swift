@@ -77,9 +77,9 @@ class CustomNavigationBar: UIView {
                 self.addSubview(bottomLine)
                 self.bottomLine.snp.makeConstraints { make in
                     make.height.equalTo(1)
-                    make.leading.trailing.equalToSuperview()
-                    make.top.equalTo(containerView.snp.bottom)
-//                    make.leading.trailing.bottom.equalToSuperview()
+//                    make.leading.trailing.equalToSuperview()
+//                    make.top.equalTo(containerView.snp.bottom)
+                    make.leading.trailing.bottom.equalToSuperview()
                 }
             } else {
                 self.bottomLine.removeFromSuperview()
@@ -97,9 +97,8 @@ class CustomNavigationBar: UIView {
                     make.width.height.equalTo(30)
                 }
                 self.navigationTitleLabel.snp.remakeConstraints { make in
-//                    make.leading.equalTo(leftButton.snp.trailing).offset(50)
-                    make.centerX.equalToSuperview()
-                    make.centerY.equalToSuperview()
+                    make.centerX.equalTo(containerView)
+                    make.centerY.equalTo(containerView)
                     make.bottom.equalTo(containerView).offset(-19)
                 }
                 self.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
@@ -202,14 +201,14 @@ class CustomNavigationBar: UIView {
     /// 컨테이너뷰
     let containerView: UIView = {
         let containerView = UIView()
-        containerView.backgroundColor = .systemPink
+        containerView.backgroundColor = .white
         return containerView
     }()
     /// 네비게이션바 바텀라인
     let bottomLine: UIView = {
         let bottomLine = UIView()
-        bottomLine.backgroundColor = .black
-//        bottomLine.backgroundColor = .lightGray.withAlphaComponent(1)
+//        bottomLine.backgroundColor = .black
+        bottomLine.backgroundColor = .lightGray.withAlphaComponent(1)
         return bottomLine
     }()
     /// 좌측 버튼
@@ -289,7 +288,7 @@ class CustomNavigationBar: UIView {
         var navigationTitleLabel = UILabel()
         navigationTitleLabel.sizeToFit()
         navigationTitleLabel.textColor = .black
-        navigationTitleLabel.font = UIFont(name: "NanumGothic", size: 20)
+        navigationTitleLabel.font = UIFont(name: "NanumGothic", size: 16)
         navigationTitleLabel.font = navigationTitleLabel.font.bold
         return navigationTitleLabel
     }()
