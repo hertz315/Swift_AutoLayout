@@ -164,7 +164,9 @@ extension DetailSearchResultVC: UICollectionViewDelegate {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewHeader.reuseIdentifier, for: indexPath) as! CollectionViewHeader
-            #warning("TODO : - ㅇ ")
+            // 총 상품의 갯수를 변수에 저장
+            let totalCount = dataList.count
+            header.totalProductCoutLabel.text = "총 \(totalCount)개의 상품"
             return header
         default:
             return UICollectionReusableView()

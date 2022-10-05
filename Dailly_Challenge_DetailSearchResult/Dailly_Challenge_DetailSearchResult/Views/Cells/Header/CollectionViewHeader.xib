@@ -106,6 +106,10 @@
                 <constraint firstItem="wBT-Ta-dFH" firstAttribute="leading" secondItem="x60-BU-KUq" secondAttribute="leading" id="I7m-ZE-qWt"/>
                 <constraint firstItem="x60-BU-KUq" firstAttribute="trailing" secondItem="wBT-Ta-dFH" secondAttribute="trailing" id="eed-N1-lha"/>
             </constraints>
+            <connections>
+                <outlet property="dropDownButton" destination="xU2-8B-mWD" id="VoF-yD-3r9"/>
+                <outlet property="totalProductCoutLabel" destination="1hq-I6-DLf" id="3oz-le-rt0"/>
+            </connections>
             <point key="canvasLocation" x="110" y="18.838862559241704"/>
         </collectionReusableView>
     </objects>

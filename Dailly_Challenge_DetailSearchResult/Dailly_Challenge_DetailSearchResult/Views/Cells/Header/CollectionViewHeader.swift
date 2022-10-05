@@ -8,8 +8,12 @@
 import UIKit
 
 class CollectionViewHeader: UICollectionReusableView {
+    /// 전역변수
     static let nibName = "CollectionViewHeader"
     static let reuseIdentifier = "CollectionViewHeader"
     
+    // MARK: - DropDown
+    @IBOutlet weak var totalProductCoutLabel: UILabel!
+    @IBOutlet weak var dropDownButton: UIButton!
     
 }
