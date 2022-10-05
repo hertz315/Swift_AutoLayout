@@ -10,13 +10,22 @@ import SnapKit
 
 
 final class DetailSearchResultVC: UIViewController {
-    
     /// 데이터 배열
     /// 색션을 구분하기 위해 2차원 배열로 만듬
     var dataList: [SearchResultModel] = []
     
     /// 네비게이션 바 생성
     var customNavigationBar = CustomNavigationBar()
+    let headerVC = CollectionViewHeader()
+    /// 피커뷰 생성
+    let pickerView = UIPickerView()
+    /// 피커뷰 데이터 리스트
+    let productSort = ["인기판매순","최신순","높은가격순","낮은가격순"]
+    /// 선택된 프로덕트
+    var selectProductText: String = "최신순"
+    
+    /// ⭐️CollectionViewHeader에 접근
+    var collectionViewHeader = CollectionViewHeader()
     
     /// 컬렉션 뷰 생성
     lazy var collectionView: UICollectionView = {
@@ -47,7 +56,12 @@ final class DetailSearchResultVC: UIViewController {
         setupCollectionViewData()
         /// 셋업 컬렉션뷰
         setupCollectionView()
+        /// 피커뷰 관련
     }
+    
+    
+    
+    
     
     /// 네비게이션바 셋팅
     fileprivate func setupNaviBar() {
@@ -95,6 +109,12 @@ final class DetailSearchResultVC: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+    }
+    
+    @objc func doneButtonTapped() {
+        dismiss(animated: true)
+        
+//        headerVC.layoutIfNeeded()
     }
     
 }
@@ -152,10 +172,11 @@ extension DetailSearchResultVC {
         /// 섹션에 헤더, 풋터 등록
         section.boundarySupplementaryItems = [header]
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//        section.orthogonalScrollingBehavior = .continuous
+        //        section.orthogonalScrollingBehavior = .continuous
         /// 반환
         return section
     }
+    
 }
 
 // MARK: - 컬렉션뷰 델리게이트
@@ -164,9 +185,55 @@ extension DetailSearchResultVC: UICollectionViewDelegate {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewHeader.reuseIdentifier, for: indexPath) as! CollectionViewHeader
-            // 총 상품의 갯수를 변수에 저장
+            /// 총 상품의 갯수를 변수에 저장
             let totalCount = dataList.count
             header.totalProductCoutLabel.text = "총 \(totalCount)개의 상품"
+            /// ⭐️클로저 터트리기⭐️
+            header.onDropDwonButtonTapped = { [weak self] in
+                print("📌")
+                
+                // 화면 크기
+                let screenWidth = UIScreen.main.bounds.width - 10
+                let screenHeight = UIScreen.main.bounds.height / 3
+                let selectedRow = 0
+                
+                guard let self = self else {return}
+                let vc = UIViewController()
+                vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
+                let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+                pickerView.backgroundColor = .white
+                pickerView.dataSource = self
+                pickerView.delegate = self
+                /// 화면 로딩시 초기값 셋팅
+                pickerView.selectRow(selectedRow, inComponent: 0, animated: true)
+                /// adSubView
+                vc.view.addSubview(pickerView)
+                pickerView.snp.makeConstraints { make in
+                    make.bottom.equalToSuperview()
+                    make.leading.trailing.equalToSuperview()
+                }
+                self.present(vc, animated: true)
+                
+                // 툴바 만들기
+                let toolbar = UIToolbar()
+                let btnDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonTapped))
+                toolbar.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 60)
+                toolbar.backgroundColor = .lightGray
+                toolbar.barStyle = .default
+                toolbar.isTranslucent = false
+                toolbar.items = [btnDone]
+                vc.view.addSubview(toolbar)
+                toolbar.snp.makeConstraints { make in
+                    make.bottom.equalTo(pickerView.snp.top)
+                    make.leading.trailing.equalToSuperview()
+                }
+                header.productSortLabel.text = self.selectProductText
+                header.layoutIfNeeded()
+            }
+            
+            
+//            header.reloadInputViews()
+            
             return header
         default:
             return UICollectionReusableView()
@@ -190,5 +257,43 @@ extension DetailSearchResultVC: UICollectionViewDataSource {
         cell.productPriceLabel.text = cellData.productPrice
         return cell
     }
+    
+}
+
+// MARK: - 커스텀 델리게이트
+extension DetailSearchResultVC: ProductSortDelegate {
+    func sortPickerView() {
+    }
+}
+
+extension DetailSearchResultVC: LabelChangeDelegate {
+    func chageLabel() {
+        print("📌")
+        self.selectProductText = (collectionViewHeader.productSortLabel?.text)!
+    }
+}
+
+// MARK: - 피커뷰 델리게이트,데이터소스
+extension DetailSearchResultVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    /// 피커뷰의 구성요소(컬럼) 수
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    /// 구성요소(컬럼)의 행수
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return productSort.count
+    }
+    /// 피커뷰에 보여줄 값 전달
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return productSort[row]
+    }
+    /// 피커뷰 선택시 호출
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectProductText = productSort[row]
+        print(selectProductText)
+        headerVC.layoutIfNeeded()
+        
+    }
+    
     
 }

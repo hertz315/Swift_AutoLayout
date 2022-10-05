@@ -23,14 +23,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBT-Ta-dFH">
                     <rect key="frame" x="0.0" y="0.0" width="589" height="143"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ggg-pW-p5B">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ggg-pW-p5B">
                             <rect key="frame" x="16" y="20" width="557" height="103"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ㄴㅁㅇㄹㅁ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hq-I6-DLf">
                                     <rect key="frame" x="0.0" y="43.333333333333336" width="210.66666666666666" height="16.333333333333336"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="210.66999999999999" id="r9d-Xi-bUf"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                     <color key="textColor">
                                         <string key="name">
@@ -39,13 +36,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCm-Mr-Add">
-                                    <rect key="frame" x="357" y="41.666666666666664" width="200" height="20"/>
+                                    <rect key="frame" x="210.66666666666666" y="41.666666666666664" width="346.33333333333337" height="20"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-a9-pb7">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-a9-pb7">
+                                            <rect key="frame" x="0.0" y="0.0" width="346.33333333333331" height="20"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="최신순" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-FC-zbx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="최신순" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-FC-zbx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="311.33333333333331" height="20"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                     <color key="textColor">
                                                         <string key="name">
@@ -54,7 +51,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropDown" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-BQ-JZu">
-                                                    <rect key="frame" x="180" y="0.0" width="20" height="20"/>
+                                                    <rect key="frame" x="326.33333333333337" y="0.0" width="20" height="20"/>
                                                     <color key="tintColor">
                                                         <string key="name">
 9.5.darkgray</string>
@@ -65,14 +62,14 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="GyG-lu-Ecf"/>
-                                            </constraints>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-8B-mWD">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346.33333333333331" height="20"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title=""/>
+                                            <connections>
+                                                <action selector="dropDownButtonTapped:" destination="7Vo-KH-D1z" eventType="touchUpInside" id="c7E-4E-PJi"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,6 +85,9 @@
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="557" id="oWj-OE-7Pb"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,6 +108,7 @@
             </constraints>
             <connections>
                 <outlet property="dropDownButton" destination="xU2-8B-mWD" id="VoF-yD-3r9"/>
+                <outlet property="productSortLabel" destination="v5l-FC-zbx" id="eF0-Zr-mkg"/>
                 <outlet property="totalProductCoutLabel" destination="1hq-I6-DLf" id="3oz-le-rt0"/>
             </connections>
             <point key="canvasLocation" x="110" y="18.838862559241704"/>

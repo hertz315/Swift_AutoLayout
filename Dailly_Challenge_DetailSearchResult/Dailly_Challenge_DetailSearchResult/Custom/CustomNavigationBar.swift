@@ -229,8 +229,8 @@ class CustomNavigationBar: UIView {
         config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         var rightButton = UIButton(configuration: config)
-        rightButton.isSelected = true
-        rightButton.isHighlighted = true
+//        rightButton.isSelected = true
+//        rightButton.isHighlighted = true
         return rightButton
     }()
     /// 알림 카운트 이미지
@@ -251,8 +251,8 @@ class CustomNavigationBar: UIView {
         config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         var btn = UIButton(configuration: config)
-        btn.isSelected = true
-        btn.isHighlighted = true
+//        btn.isSelected = true
+//        btn.isHighlighted = true
         return btn
     }()
     
