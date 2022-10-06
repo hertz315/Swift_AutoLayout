@@ -22,7 +22,13 @@ final class DetailSearchResultVC: UIViewController {
     /// 피커뷰 데이터 리스트
     let productSort = ["인기판매순","최신순","높은가격순","낮은가격순"]
     /// 선택된 프로덕트
-    var selectProductText: String = "최신순"
+    var selectProductText: String = "최신순" {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     /// ⭐️CollectionViewHeader에 접근
     var collectionViewHeader = CollectionViewHeader()
@@ -58,10 +64,6 @@ final class DetailSearchResultVC: UIViewController {
         setupCollectionView()
         /// 피커뷰 관련
     }
-    
-    
-    
-    
     
     /// 네비게이션바 셋팅
     fileprivate func setupNaviBar() {
@@ -114,7 +116,6 @@ final class DetailSearchResultVC: UIViewController {
     @objc func doneButtonTapped() {
         dismiss(animated: true)
         
-//        headerVC.layoutIfNeeded()
     }
     
 }
@@ -142,13 +143,13 @@ extension DetailSearchResultVC {
     static func getCompostionalLayoutSection() -> NSCollectionLayoutSection {
         
         /// 아이템사이즈 - 그룹의 가로크기의 1/2, 최소크기 50
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .estimated(232))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .estimated(340))
         /// 아이템사이즈로 아이템 만들기
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         // 아이템간의 여백 설정
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8)
         /// 아이템 사이즈 - 그룹의
-        let itemSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .estimated(232))
+        let itemSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .estimated(340))
         /// 아이템 사이즈로 아이템 만들기
         let item2 = NSCollectionLayoutItem(layoutSize: itemSize2)
         /// 아이템간의 여백 설정
@@ -157,9 +158,10 @@ extension DetailSearchResultVC {
         
         /// 그룹사이즈 - 컬렉션뷰 가로길의의 1, 컬렉션 뷰 세로길이의 3)
         let groupSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(1),
-                                                heightDimension: .estimated(235))
+                                                heightDimension: .fractionalHeight(1/2))
         /// 그룹사이즈로 그룹만들기
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item, item2])
+        /// 그룹 간의 여백
         /// 헤더사이즈 -
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .absolute(55))
@@ -176,7 +178,6 @@ extension DetailSearchResultVC {
         /// 반환
         return section
     }
-    
 }
 
 // MARK: - 컬렉션뷰 델리게이트
@@ -188,6 +189,8 @@ extension DetailSearchResultVC: UICollectionViewDelegate {
             /// 총 상품의 갯수를 변수에 저장
             let totalCount = dataList.count
             header.totalProductCoutLabel.text = "총 \(totalCount)개의 상품"
+            /// 헤더의 라벨 텍스트 피커뷰 변경시 실시간으로 바꾸기
+            header.productSortLabel.text = self.selectProductText
             /// ⭐️클로저 터트리기⭐️
             header.onDropDwonButtonTapped = { [weak self] in
                 print("📌")
@@ -227,12 +230,7 @@ extension DetailSearchResultVC: UICollectionViewDelegate {
                     make.bottom.equalTo(pickerView.snp.top)
                     make.leading.trailing.equalToSuperview()
                 }
-                header.productSortLabel.text = self.selectProductText
-                header.layoutIfNeeded()
             }
-            
-            
-//            header.reloadInputViews()
             
             return header
         default:
@@ -260,18 +258,6 @@ extension DetailSearchResultVC: UICollectionViewDataSource {
     
 }
 
-// MARK: - 커스텀 델리게이트
-extension DetailSearchResultVC: ProductSortDelegate {
-    func sortPickerView() {
-    }
-}
-
-extension DetailSearchResultVC: LabelChangeDelegate {
-    func chageLabel() {
-        print("📌")
-        self.selectProductText = (collectionViewHeader.productSortLabel?.text)!
-    }
-}
 
 // MARK: - 피커뷰 델리게이트,데이터소스
 extension DetailSearchResultVC: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -291,9 +277,6 @@ extension DetailSearchResultVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.selectProductText = productSort[row]
         print(selectProductText)
-        headerVC.layoutIfNeeded()
         
     }
-    
-    
 }
