@@ -8,10 +8,25 @@
 import UIKit
 import SnapKit
 import Then
+import Combine
+import RxCocoa
+import RxSwift
 
 @available(iOS 15.0, *)
 class ViewController: UIViewController {
 
+    // combine
+    @Published var loadingState : LoadingButton.LoadingState = .normal
+    
+    // rx
+    let loadingStateRx = BehaviorRelay<LoadingButton.LoadingState>(value: .normal)
+    
+    // rx
+    let disposeBag = DisposeBag()
+    
+    // combine
+    var subscriptions = Set<AnyCancellable>()
+    
     lazy var scrollView: UIScrollView = UIScrollView().then{
         // 사용자 터치
         $0.isUserInteractionEnabled = true
@@ -70,14 +85,28 @@ class ViewController: UIViewController {
         let icon = UIImage(systemName: "person")
        
         /// 더미 버튼 만들기
-        let dummyButtons: [UIButton] = Array(1...20).map { index in
+        let dummyButtons: [LoadingButton] = Array(1...20).map { index in
             LoadingButton(title: "아이콘 번호\(index)", icon: icon)
         }
         
         dummyButtons.forEach {
             buttonStackView.addArrangedSubview($0)
             $0.addTarget(self, action: #selector(onButtonTapped(_:)), for: .touchUpInside)
+            // 콤바인 퍼플리셔 데이터 상태 <-> 버튼의 loadingState
+//            self.$loadingState
+//                .assign(to: \.loadingState, on: $0)
+//                .store(in: &subscriptions)
+            
+            // Rx 옵저버블 데이터 상태 <-> 버튼의 loadingState
+            self.loadingStateRx
+                .bind(to: $0.rx.loadingState)
+                .disposed(by: disposeBag)
+            
         }
+        
+        
+        
+        
     }
 
 
@@ -89,7 +118,25 @@ extension ViewController {
     /// 버튼 클릭시 호출되는 함수
     @objc fileprivate func onButtonTapped(_ sender: LoadingButton) {
         
-        sender.loadingState = sender.loadingState == .loading ? .normal : .loading
+        
+        if self.loadingState == .loading {
+            return
+        }
+        
+        self.loadingState = .loading
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+            self.loadingState = .normal
+        })
+        
+        // 퍼블리셔 데이터 상태를 변경한다
+//        if self.loadingState == .normal {
+//            self.loadingState = .loading
+//        } else {
+//            self.loadingState = .normal
+//        }
+        
+//        sender.loadingState = sender.loadingState == .loading ? .normal : .loading
         
     }
 }

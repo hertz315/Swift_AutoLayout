@@ -129,6 +129,9 @@ extension LoadingButton {
     
     /// 로딩 숨기기
     fileprivate func hideLoading() {
+        
+        indicator?.isUserInteractionEnabled = true
+        
         UIView.transition(with: self, duration: 0.2, options: .curveEaseIn) {
             // 로딩중이 아닐땐 타이틀을 불투명하게 처리
             self.titleLabel?.alpha = 1
@@ -142,6 +145,8 @@ extension LoadingButton {
     
     /// 로딩 보여주기
     fileprivate func showLoding() {
+        
+        indicator?.isUserInteractionEnabled = false
        
         // 인디케이터 위치 크기 잡기
         if indicator == nil {
